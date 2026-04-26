@@ -327,6 +327,47 @@ function Testimonials() {
 }
 
 function Contact() {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+    
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+      setStatus('success');
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    }
+  };
+
+  if (status === 'success') {
+    return (
+      <section id="contact" className="py-24 max-w-7xl mx-auto px-6">
+        <div className="glass-panel p-20 rounded-[60px] text-center">
+          <div className="w-20 h-20 bg-prosperity-500 rounded-full flex items-center justify-center mx-auto mb-8">
+            <ChevronRight className="w-10 h-10 text-white rotate-90" />
+          </div>
+          <h3 className="text-4xl font-display font-bold text-white mb-4">Inquiry Received</h3>
+          <p className="text-clarity-300 mb-8">Thank you for reaching out. A team member from Ember Core will contact you shortly.</p>
+          <button 
+            onClick={() => setStatus('idle')}
+            className="px-8 py-4 bg-royal-600 text-white font-bold rounded-full"
+          >
+            Send Another Message
+          </button>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="contact" className="py-24 max-w-7xl mx-auto px-6">
       <div className="glass-panel p-8 md:p-20 rounded-[60px] overflow-hidden relative">
@@ -359,12 +400,22 @@ function Contact() {
             </div>
           </div>
 
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form 
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            className="space-y-6" 
+            onSubmit={handleSubmit}
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest opacity-50 text-clarity-200">Full Name</label>
                 <input 
                   type="text" 
+                  name="fullName"
+                  required
                   placeholder="John Wick"
                   className="w-full bg-clarity-50/5 border border-clarity-50/10 rounded-2xl p-4 focus:ring-2 focus:ring-ember-500 transition-all outline-none text-white"
                 />
@@ -373,6 +424,8 @@ function Contact() {
                 <label className="text-xs font-bold uppercase tracking-widest opacity-50 text-clarity-200">Email Address</label>
                 <input 
                   type="email" 
+                  name="email"
+                  required
                   placeholder="john@studio.com"
                   className="w-full bg-clarity-50/5 border border-clarity-50/10 rounded-2xl p-4 focus:ring-2 focus:ring-ember-500 transition-all outline-none text-white"
                 />
@@ -381,12 +434,16 @@ function Contact() {
             
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-widest opacity-50 text-clarity-200">Service Interest</label>
-              <select className="w-full bg-clarity-50/5 border border-clarity-50/10 rounded-2xl p-4 focus:ring-2 focus:ring-ember-500 transition-all outline-none appearance-none cursor-pointer text-clarity-100">
-                <option>Equipment Rental</option>
-                <option>Portable Bar Setup</option>
-                <option>Prop & Wardrobe</option>
-                <option>On-Set Glam & Lifestyle</option>
-                <option>General Inquiry</option>
+              <select 
+                name="service"
+                required
+                className="w-full bg-clarity-50/5 border border-clarity-50/10 rounded-2xl p-4 focus:ring-2 focus:ring-ember-500 transition-all outline-none appearance-none cursor-pointer text-clarity-100"
+              >
+                <option value="equipment">Equipment Rental</option>
+                <option value="bar">Portable Bar Setup</option>
+                <option value="wardrobe">Prop & Wardrobe</option>
+                <option value="glam">On-Set Glam & Lifestyle</option>
+                <option value="general">General Inquiry</option>
               </select>
             </div>
 
@@ -394,14 +451,21 @@ function Contact() {
               <label className="text-xs font-bold uppercase tracking-widest opacity-50 text-clarity-200">Message</label>
               <textarea 
                 rows={4}
+                name="message"
+                required
                 placeholder="Tell us about your project..."
                 className="w-full bg-clarity-50/5 border border-clarity-50/10 rounded-2xl p-4 focus:ring-2 focus:ring-ember-500 transition-all outline-none resize-none text-white"
               />
             </div>
 
-            <button className="w-full py-5 bg-prosperity-600 hover:bg-prosperity-500 text-white font-bold rounded-2xl transition-all shadow-xl shadow-prosperity-600/20 active:scale-95">
-              Send Inquiry
+            <button 
+              type="submit"
+              disabled={status === 'loading'}
+              className="w-full py-5 bg-prosperity-600 hover:bg-prosperity-500 disabled:opacity-50 text-white font-bold rounded-2xl transition-all shadow-xl shadow-prosperity-600/20 active:scale-95"
+            >
+              {status === 'loading' ? 'Sending...' : 'Send Inquiry'}
             </button>
+            {status === 'error' && <p className="text-red-500 text-xs text-center">Something went wrong. Please try again.</p>}
           </form>
         </div>
       </div>
