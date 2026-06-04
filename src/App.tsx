@@ -839,7 +839,9 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-prosperity-400 font-mono">Inquiry Routing Center</span>
-              <h2 className="text-4xl md:text-5xl font-display font-extrabold text-white mt-1 mb-8">Send Inquiries to contact@embercorestudio.org</h2>
+              <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-[2.75rem] font-display font-extrabold text-white mt-1 mb-8 leading-tight">
+                Send Inquiries to <span className="text-ember-400 inline-block whitespace-nowrap">contact@embercorestudio.org</span>
+              </h2>
               
               <p className="text-clarity-300 leading-relaxed text-sm mb-8">
                 Submit details below if you are an SBA manager, angel investor, educational development officer, or student desiring early curriculum enrollment. 
