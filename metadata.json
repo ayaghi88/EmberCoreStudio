@@ -1,6 +1,6 @@
 {
   "name": "Ember Core Studio",
-  "description": "Ember Core Studio is a one-stop shop for professional media equipment rentals, portable bar setups, and filming production needs.",
+  "description": "Premium multi-utility launcher for authors and creators featuring Shrink and Send, Text Detox Alchemy, and Authors Linguist.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

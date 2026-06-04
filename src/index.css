@@ -19,10 +19,12 @@
   --color-ember-950: #431407;
 
   --color-prosperity-50: #f0fdf4;
+  --color-prosperity-400: #4ade80;
   --color-prosperity-500: #22c55e;
   --color-prosperity-600: #16a34a;
 
   --color-royal-50: #faf5ff;
+  --color-royal-400: #c084fc;
   --color-royal-500: #a855f7;
   --color-royal-600: #9333ea;
   --color-royal-950: #2e1065;
@@ -31,8 +33,11 @@
   --color-clarity-100: #f8fafc;
   --color-clarity-200: #f1f5f9;
   --color-clarity-300: #e2e8f0;
+  --color-clarity-400: #cbd5e1;
+  --color-clarity-500: #94a3b8;
 
-  --color-base-950: #0f172a;
+  --color-base-900: #0a0f1d;
+  --color-base-950: #05070f;
 }
 
 @layer base {
@@ -49,10 +54,23 @@
   @apply bg-clarity-50/5 backdrop-blur-xl border border-clarity-50/10;
 }
 
+.card-gradient-ember {
+  background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.15), transparent 70%);
+}
+
+.card-gradient-royal {
+  background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.15), transparent 70%);
+}
+
+.card-gradient-prosperity {
+  background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.15), transparent 70%);
+}
+
 .ember-gradient {
   background: radial-gradient(circle at 50% 50%, var(--color-ember-600) 0%, transparent 70%);
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-ember-400 via-royal-500 to-prosperity-500;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-ember-400 via-royal-400 to-prosperity-400;
 }
+
