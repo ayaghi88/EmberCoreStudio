@@ -29,8 +29,8 @@ import {
   FileCheck,
   Lightbulb,
   Compass,
-  Database,
-  Trash2
+  Copy,
+  Check
 } from 'lucide-react';
 import { APPS_DATA, AppProject } from './data';
 
@@ -43,75 +43,16 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<FilterCategory>('All');
   const [selectedApp, setSelectedApp] = useState<AppProject | null>(null);
   
-  // Form submission handling for Netlify Form Builder & Local Sandbox Inbox
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [inquiries, setInquiries] = useState<{ id: string; fullName: string; email: string; service: string; message: string; date: string }[]>(() => {
+  // Email-to-clipboard copy feature
+  const [copied, setCopied] = useState(false);
+  const handleCopyEmail = () => {
     try {
-      const saved = localStorage.getItem('ember_core_inquiries');
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
+      navigator.clipboard.writeText('contact@embercorestudio.org');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.warn('Clipboard write fallback:', err);
     }
-  });
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus('loading');
-    const formElement = e.currentTarget;
-    const formData = new FormData(formElement);
-    
-    const fullName = formData.get('fullName') as string;
-    const email = formData.get('email') as string;
-    const service = formData.get('service') as string;
-    const message = formData.get('message') as string;
-
-    const newInquiry = {
-      id: Math.random().toString(36).substring(2, 11),
-      fullName: fullName || 'Anonymous Sender',
-      email: email || 'contact@embercorestudio.org',
-      service: service || 'General Alliance',
-      message: message || '',
-      date: new Date().toLocaleDateString('en-US', {
-        month: 'short',
-        day: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      })
-    };
-
-    // Save to local cache database for instant preview feedback
-    const updated = [newInquiry, ...inquiries];
-    setInquiries(updated);
-    try {
-      localStorage.setItem('ember_core_inquiries', JSON.stringify(updated));
-    } catch (ex) {
-      console.error(ex);
-    }
-
-    try {
-      // Fire Netlify POST fetch with explicit parameters. Ignores errors gracefully when offline,
-      // but correctly connects if hosted inside Netlify CDN zones.
-      const bodyParams = new URLSearchParams();
-      bodyParams.append('form-name', 'contact');
-      bodyParams.append('fullName', fullName || '');
-      bodyParams.append('email', email || '');
-      bodyParams.append('service', service || '');
-      bodyParams.append('message', message || '');
-
-      await fetch('/', {
-        method: 'POST',
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: bodyParams.toString(),
-      });
-    } catch (error) {
-      console.log('Netlify routing absent in preview sandbox. Saved to local sandbox ledger instead.', error);
-    }
-
-    setTimeout(() => {
-      setStatus('success');
-      formElement.reset();
-    }, 1000);
   };
 
   // Filter & Search Logic
@@ -885,172 +826,112 @@ export default function App() {
         </div>
       </section>
 
-      {/* INQUIRY CONTACT FORM: Target Email to contact@embercorestudio.org */}
+      {/* INQUIRY CONTACT INFO & TRACKS */}
       <section id="connect" className="py-24 max-w-7xl mx-auto px-6">
-        <div className="glass-panel p-8 md:p-20 rounded-[60px] overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-tr from-ember-500 to-royal-500 blur-[120px] opacity-15 -translate-y-1/2 translate-x-1/2" />
+        <div className="glass-panel p-8 md:p-16 rounded-[40px] overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-tr from-ember-500 to-royal-500 blur-[120px] opacity-15 -translate-y-1/2 translate-x-1/2 font-sans" />
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+            <div className="lg:col-span-5 space-y-6">
               <span className="text-xs font-bold uppercase tracking-widest text-prosperity-400 font-mono">Inquiry Routing Center</span>
-              <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-[2.75rem] font-display font-extrabold text-white mt-1 mb-8 leading-tight">
-                Send Inquiries to <span className="text-ember-400 inline-block whitespace-nowrap">contact@embercorestudio.org</span>
+              <h2 className="text-3xl md:text-5xl font-display font-extrabold text-white leading-tight">
+                Get in Touch
               </h2>
-              
-              <p className="text-clarity-300 leading-relaxed text-sm mb-8">
-                Submit details below if you are an SBA manager, angel investor, educational development officer, or student desiring early curriculum enrollment. 
-                All form interactions are routed directly to <strong className="text-white">contact@embercorestudio.org</strong> for swift review.
+              <p className="text-clarity-300 leading-relaxed text-sm">
+                We streamline communication directly to ensure immediate attention is paid to all serious inquiries, funding arrangements, or educational partnerships. Reach out directly through official channels.
               </p>
 
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 text-clarity-300">
-                  <div className="w-10 h-10 rounded-full bg-clarity-50/10 flex items-center justify-center">
-                    <Mail className="w-5 h-5 text-ember-400" />
+              <div className="space-y-4 pt-4">
+                <div className="p-4 rounded-xl bg-base-950 border border-clarity-50/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-ember-500/10 flex items-center justify-center shrink-0">
+                      <Mail className="w-5 h-5 text-ember-400" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-clarity-500 font-mono">Official Routing Desk</p>
+                      <p className="text-sm font-semibold text-white selection:bg-ember-500/20">contact@embercorestudio.org</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-clarity-500">Official Routing Desk</p>
-                    <p className="font-semibold text-white">contact@embercorestudio.org</p>
-                  </div>
+                  <button
+                    onClick={handleCopyEmail}
+                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-clarity-50/10 hover:bg-clarity-50/20 font-mono text-white text-xs font-semibold transition-all self-start sm:self-center shrink-0 border border-clarity-50/5 active:scale-95"
+                    title="Copy email to clipboard"
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-prosperity-400" />
+                        <span className="text-prosperity-400">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5 text-clarity-300" />
+                        <span>Copy Email</span>
+                      </>
+                    )}
+                  </button>
                 </div>
-                <div className="flex items-center gap-4 text-clarity-300">
-                  <div className="w-10 h-10 rounded-full bg-clarity-50/10 flex items-center justify-center">
+
+                <div className="p-4 rounded-xl bg-base-950 border border-clarity-50/10 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-royal-500/10 flex items-center justify-center shrink-0">
                     <Linkedin className="w-5 h-5 text-royal-400" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-clarity-500">Executive LinkedIn</p>
-                    <p className="font-semibold text-white">linkedin.com/in/amberyaghi</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Netlify Managed Dynamic Contact Form */}
-            <div>
-              {status === 'success' ? (
-                <div className="p-8 rounded-2xl bg-prosperity-500/10 border border-prosperity-500/20 text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-prosperity-500 text-white flex items-center justify-center mx-auto">
-                    <FileCheck className="w-8 h-8" />
-                  </div>
-                  <h3 className="font-display font-bold text-2xl text-white">Pitch Inquiry Transmitted</h3>
-                  <p className="text-xs text-clarity-300">Thank you for your valuable response. Your email coordinates have been logged of record to contact@embercorestudio.org.</p>
-                  <button 
-                    onClick={() => setStatus('idle')}
-                    className="px-6 py-2.5 bg-prosperity-600 text-white text-xs font-bold rounded-xl hover:bg-prosperity-500 transition-colors"
-                  >
-                    Transmit Additional Pitch
-                  </button>
-                </div>
-              ) : (
-                <form 
-                  name="contact"
-                  method="POST"
-                  data-netlify="true"
-                  onSubmit={handleSubmit}
-                  className="space-y-6"
-                >
-                  <input type="hidden" name="form-name" value="contact" />
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-clarity-200">Personal Full Name</label>
-                      <input 
-                        type="text" 
-                        name="fullName"
-                        required
-                        placeholder="Founder / Fund Officer"
-                        className="w-full bg-clarity-50/5 border border-clarity-50/10 rounded-2xl p-4 focus:ring-2 focus:ring-ember-500 transition-all outline-none text-white text-sm"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-clarity-200">Email Coordinate</label>
-                      <input 
-                        type="email" 
-                        name="email"
-                        required
-                        placeholder="yourdesk@firm.com"
-                        className="w-full bg-clarity-50/5 border border-clarity-50/10 rounded-2xl p-4 focus:ring-2 focus:ring-ember-500 transition-all outline-none text-white text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-clarity-200">Venture Intent Category</label>
-                    <select 
-                      name="service"
-                      required
-                      className="w-full bg-base-900 border border-clarity-50/10 rounded-2xl p-4 focus:ring-2 focus:ring-ember-500 transition-all outline-none appearance-none cursor-pointer text-clarity-300 text-sm"
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-clarity-500 font-mono">Executive LinkedIn</p>
+                    <a 
+                      href="https://linkedin.com/in/amberyaghi" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="text-sm font-semibold text-white hover:text-royal-400 transition-colors flex items-center gap-1"
                     >
-                      <option value="SBA Funding">SBA Government Grant Pitch</option>
-                      <option value="Angel Investment">Angel Capital Placement</option>
-                      <option value="Curriculum Cohort">Weekly Curriculum Cohort</option>
-                      <option value="General Alliance">Incubator Partnership Proposal</option>
-                    </select>
+                      <span>linkedin.com/in/amberyaghi</span>
+                      <ArrowUpRight className="w-3 h-3 text-clarity-400" />
+                    </a>
                   </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-clarity-200">Inquiry Brief Description</label>
-                    <textarea 
-                      rows={4}
-                      name="message"
-                      required
-                      placeholder="Outline your partnership, funding parameters, or training enrollment details..."
-                      className="w-full bg-clarity-50/5 border border-clarity-50/10 rounded-2xl p-4 focus:ring-2 focus:ring-ember-500 transition-all outline-none resize-none text-white text-sm"
-                    />
-                  </div>
-
-                  <button 
-                    type="submit"
-                    disabled={status === 'loading'}
-                    className="w-full py-5 bg-prosperity-600 hover:bg-prosperity-500 disabled:opacity-50 text-white font-bold rounded-2xl transition-all shadow-xl shadow-prosperity-600/20 active:scale-95 uppercase tracking-wider text-xs"
-                  >
-                    {status === 'loading' ? 'Transmitting Inquiries...' : 'Transmit Pitch Coordinates'}
-                  </button>
-                  {status === 'error' && <p className="text-red-500 text-xs text-center font-mono">Something went wrong. Please double-check connection settings.</p>}
-                </form>
-              )}
-            </div>
-
-            {/* Collapsible Sandbox Inquiry CRM Ledger */}
-            {inquiries.length > 0 && (
-              <div className="lg:col-span-2 mt-8 pt-8 border-t border-clarity-50/10 animate-fade-in">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-royal-500/10 text-royal-400 border border-royal-500/20">
-                      <Database className="w-5 h-5 animate-pulse" />
-                    </div>
-                    <div>
-                      <h4 className="font-display font-bold text-white text-sm">Sandbox Pitch CRM & Routing Console</h4>
-                      <p className="text-[10px] text-clarity-400 font-mono">Simulating real-time server database storage in local sandboxes.</p>
-                    </div>
-                  </div>
-                  <button 
-                    onClick={() => {
-                      setInquiries([]);
-                      localStorage.removeItem('ember_core_inquiries');
-                    }}
-                    className="self-start sm:self-center flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 text-xs font-semibold tracking-wider uppercase transition-colors"
-                  >
-                    <Trash2 className="w-3.5 h-3.5" /> Clear Logs ({inquiries.length})
-                  </button>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-72 overflow-y-auto pr-2 custom-scrollbar">
-                  {inquiries.map((inq) => (
-                    <div key={inq.id} className="p-5 rounded-2xl border border-clarity-50/10 bg-base-900/60 hover:border-clarity-50/20 hover:bg-base-900/80 transition-all flex flex-col justify-between gap-4">
-                      <div>
-                        <div className="flex justify-between items-start gap-2">
-                          <span className="font-display font-semibold text-white tracking-tight break-all">{inq.fullName}</span>
-                          <span className="shrink-0 text-[9px] font-mono font-bold text-prosperity-400 bg-prosperity-500/10 px-2 py-0.5 rounded-full border border-prosperity-500/20">{inq.service}</span>
-                        </div>
-                        <span className="text-[11px] text-royal-400 font-mono block pb-3 border-b border-clarity-50/10 mt-1 break-all">{inq.email}</span>
-                        <p className="text-xs text-clarity-300 italic mt-3 leading-relaxed whitespace-pre-wrap">"{inq.message}"</p>
-                      </div>
-                      <span className="text-[10px] text-clarity-500 font-mono text-right font-light block">{inq.date}</span>
-                    </div>
-                  ))}
                 </div>
               </div>
-            )}
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-6 rounded-2xl bg-base-950/60 border border-clarity-50/5 hover:border-clarity-50/12 hover:bg-base-950/80 transition-all space-y-3">
+                <div className="w-8 h-8 rounded-lg bg-ember-500/10 flex items-center justify-center">
+                  <DollarSign className="w-4 h-4 text-ember-400" />
+                </div>
+                <h3 className="font-display font-bold text-white text-base">Capital Allocation & Grants</h3>
+                <p className="text-xs text-clarity-400 leading-relaxed">
+                  Dedicated response protocols for SBA programs, development administrators, and angel syndicate leads evaluating our target capital allocation.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-base-950/60 border border-clarity-50/5 hover:border-clarity-50/12 hover:bg-base-950/80 transition-all space-y-3">
+                <div className="w-8 h-8 rounded-lg bg-prosperity-500/10 flex items-center justify-center">
+                  <GraduationCap className="w-4 h-4 text-prosperity-400" />
+                </div>
+                <h3 className="font-display font-bold text-white text-base">Education Partnerships</h3>
+                <p className="text-xs text-clarity-400 leading-relaxed">
+                  For school district administrators, educational officers, and instructors inquiring about custom learning pipelines and cohort spots.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-base-950/60 border border-clarity-50/5 hover:border-clarity-50/12 hover:bg-base-950/80 transition-all space-y-3">
+                <div className="w-8 h-8 rounded-lg bg-royal-500/10 flex items-center justify-center">
+                  <HeartHandshake className="w-4 h-4 text-royal-400" />
+                </div>
+                <h3 className="font-display font-bold text-white text-base">Venture & Incubator Alliances</h3>
+                <p className="text-xs text-clarity-400 leading-relaxed">
+                  If you represent a venture studio, accelerator, or workspace looking to establish joint-delivery partnerships or curriculum models.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-base-950/60 border border-clarity-50/5 hover:border-clarity-50/12 hover:bg-base-950/80 transition-all space-y-3">
+                <div className="w-8 h-8 rounded-lg bg-clarity-50/10 flex items-center justify-center">
+                  <Sparkles className="w-4 h-4 text-prosperity-400" />
+                </div>
+                <h3 className="font-display font-bold text-white text-base">Student Cohort Program</h3>
+                <p className="text-xs text-clarity-400 leading-relaxed">
+                  If you are a student or developer searching for early alpha curriculum access to upcoming LovableLearner cohorts and tools.
+                </p>
+              </div>
+            </div>
 
           </div>
         </div>
