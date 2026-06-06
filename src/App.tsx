@@ -188,12 +188,12 @@ export default function App() {
               <span className="text-xs uppercase font-mono tracking-wider text-clarity-500">Developer Channels:</span>
               <div className="flex flex-wrap gap-3">
                 <a 
-                  href="https://github.com/amberyaghi88" 
+                  href="https://github.com/ayaghi88" 
                   target="_blank" 
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-900 border border-clarity-50/10 text-xs hover:text-white transition-colors"
                 >
-                  <Github className="w-3.5 h-3.5" /> amberyaghi88
+                  <Github className="w-3.5 h-3.5" /> ayaghi88
                 </a>
                 <a 
                   href="https://linkedin.com/in/amberyaghi" 
@@ -204,7 +204,7 @@ export default function App() {
                   <Linkedin className="w-3.5 h-3.5 text-royal-400" /> amberyaghi
                 </a>
                 <a 
-                  href="https://lovable.dev/profile/amberyaghi" 
+                  href="https://lovable.dev/@amberyaghi" 
                   target="_blank" 
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-900 border border-clarity-50/10 text-xs hover:text-prosperity-400 transition-colors"
@@ -966,7 +966,7 @@ export default function App() {
           </p>
 
           <div className="flex gap-6">
-            <a href="https://github.com/amberyaghi88" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+            <a href="https://github.com/ayaghi88" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
               <Github className="w-4 h-4" />
             </a>
             <a href="https://linkedin.com/in/amberyaghi" target="_blank" rel="noreferrer" className="hover:text-royal-400 transition-colors">
