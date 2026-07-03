@@ -778,12 +778,15 @@ export default function App() {
                 Grant & SBA Prospectus
               </span>
               <h2 className="text-3xl md:text-5xl font-display font-bold text-white leading-tight">
-                Operating Funding Pitch — Target Capital: $100,000
+                Operating Funding Pitch — Target Capital: $1,500,000+
               </h2>
               <p className="text-sm md:text-base text-clarity-300 leading-relaxed">
                 Ember Core Studio represents a resilient, proven technology sandbox. 
                 With 40+ functional web properties already delivered and hosted globally, we showcase mature software execution. 
-                We are actively applying for <strong className="text-white">Grants, SBA business loans, and angel allocations up to $100,000</strong> to fund our operations, educational cohort launches, and the core scale of LovableLearner.com.
+                We are actively applying for <strong className="text-white">Grants, SBA business loans, and angel allocations up to $1,500,000+</strong> to fund our operations, scale our high-impact platforms, and expand the footprint of LovableLearner.com.
+              </p>
+              <p className="text-sm md:text-base text-clarity-300 leading-relaxed">
+                Beyond incubating our own proprietary platforms, <strong className="text-white">we turn ideas into high-performance applications for clients</strong> and are actively <strong className="text-white">open to acquisition offers or strategic buyouts of our current assets</strong>.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 text-center">
