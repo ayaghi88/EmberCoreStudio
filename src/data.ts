@@ -395,5 +395,71 @@ export const APPS_DATA: AppProject[] = [
     targetAudience: '',
     developmentStory: '',
     tags: []
+  },
+  {
+    id: 'birthday-photoshoot',
+    name: 'Birthday Photoshoot Studio',
+    url: 'https://birthday-photoshoot-studio-287617961746.us-west2.run.app',
+    category: 'Niche Utility',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'legacyforge',
+    name: 'LegacyForge: The $1M Roadmap',
+    url: 'https://legacyforge-the-1m-roadmap-287617961746.us-west2.run.app',
+    category: 'Core Saas',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'wepub-ai',
+    name: 'WePub AI Book Publisher',
+    url: 'https://wepub-ai-book-publisher-287617961746.us-west2.run.app',
+    category: 'Core Saas',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'amzstyle-ai',
+    name: 'AmzStyle AI Fashion Stylist',
+    url: 'https://amzstyle-ai-fashion-stylist-287617961746.us-west2.run.app',
+    category: 'Niche Utility',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'courage-is-love',
+    name: 'Courage is Love',
+    url: 'https://courage-is-love-287617961746.us-west2.run.app',
+    category: 'Community & Culture',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'big-steel-studio',
+    name: 'Big Steel Studio',
+    url: 'https://big-steel-studio-287617961746.us-west2.run.app',
+    category: 'Community & Culture',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
   }
 ];
