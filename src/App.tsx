@@ -165,7 +165,7 @@ export default function App() {
 
             <p className="max-w-2xl text-clarity-300 text-lg md:text-xl font-light leading-relaxed">
               At <strong className="text-white font-medium">Ember Core Studio</strong>, we design, build, and incubate custom digital tools. 
-              Having engineered over 20+ specialized platforms, our portfolio addresses real bottlenecks in academia, professional services, retail sourcing, self-publishing, and high-performance workflows.
+              Having engineered over 35+ specialized platforms, our portfolio addresses real bottlenecks in academia, professional services, retail sourcing, self-publishing, and high-performance workflows.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -222,7 +222,7 @@ export default function App() {
                 <Zap className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-4xl font-display font-extrabold text-white">20+</p>
+                <p className="text-4xl font-display font-extrabold text-white">35+</p>
                 <p className="text-xs text-clarity-400 uppercase tracking-widest font-mono mt-1">Platforms Shipped</p>
               </div>
             </div>
@@ -302,11 +302,11 @@ export default function App() {
                 <ShieldCheck className="w-5 h-5 text-prosperity-400" /> Proof of Concept Certified
               </h3>
               <p className="text-sm text-clarity-300 mb-6 leading-relaxed">
-                Developing over twenty distinct, functioning code repositories serves as a clear proof-of-concept. It represents our extreme agility, robust tech architecture stack, and client delivery readiness. Rather than pitching hypothetical slideshows, we present live, operational products that real consumers can test immediately.
+                Developing over thirty-five distinct, functioning code repositories serves as a clear proof-of-concept. It represents our extreme agility, robust tech architecture stack, and client delivery readiness. Rather than pitching hypothetical slideshows, we present live, operational products that real consumers can test immediately.
               </p>
               <div className="p-4 rounded-xl bg-base-950 border border-clarity-50/10 grid grid-cols-2 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-display font-bold text-white">27</div>
+                  <div className="text-2xl font-display font-bold text-white">35</div>
                   <div className="text-[10px] text-clarity-500 uppercase tracking-widest font-mono mt-1">Live Sub-domains</div>
                 </div>
                 <div>
@@ -564,13 +564,15 @@ export default function App() {
                   <h3 className="font-display font-bold text-xl text-white group-hover:text-ember-400 transition-colors mb-2">{app.name}</h3>
                   <p className="text-xs text-clarity-300 leading-relaxed line-clamp-3 mb-4">{app.description || "Details and application profile updating soon."}</p>
                   
-                  <div className="flex flex-wrap gap-1.5">
-                    {app.tags.slice(0, 3).map(tag => (
-                      <span key={tag} className="text-[9px] font-mono px-2 py-0.5 bg-clarity-50/5 text-clarity-400 rounded">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
+                  {app.description && app.tags && app.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5">
+                      {app.tags.slice(0, 3).map(tag => (
+                        <span key={tag} className="text-[9px] font-mono px-2 py-0.5 bg-clarity-50/5 text-clarity-400 rounded">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-clarity-50/5 flex items-center justify-between">
@@ -654,7 +656,7 @@ export default function App() {
                   </div>
                 )}
 
-                {selectedApp.tags && selectedApp.tags.length > 0 && (
+                {selectedApp.description && selectedApp.tags && selectedApp.tags.length > 0 && (
                   <div className="pt-4 flex flex-wrap gap-2">
                     {selectedApp.tags.map(tag => (
                       <span key={tag} className="text-xs font-mono px-3 py-1 bg-clarity-50/5 text-clarity-300 rounded border border-clarity-50/10">
@@ -780,13 +782,13 @@ export default function App() {
               </h2>
               <p className="text-sm md:text-base text-clarity-300 leading-relaxed">
                 Ember Core Studio represents a resilient, proven technology sandbox. 
-                With 20+ functional web properties already delivered and hosted globally, we showcase mature software execution. 
+                With 35+ functional web properties already delivered and hosted globally, we showcase mature software execution. 
                 We are actively applying for <strong className="text-white">Grants, SBA business loans, and angel allocations up to $100,000</strong> to fund our operations, educational cohort launches, and the core scale of LovableLearner.com.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 text-center">
                 <div className="p-4 bg-base-950 rounded-xl border border-clarity-50/10">
-                  <div className="text-xl font-display font-bold text-white">20+</div>
+                  <div className="text-xl font-display font-bold text-white">35+</div>
                   <div className="text-[9px] text-clarity-500 uppercase tracking-widest font-mono mt-1">Functional Proofs</div>
                 </div>
                 <div className="p-4 bg-base-950 rounded-xl border border-clarity-50/10">
