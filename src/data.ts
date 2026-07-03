@@ -67,6 +67,28 @@ export const APPS_DATA: AppProject[] = [
     tags: ['Executive Hub', 'Identity', 'Sponsor Profile', 'Anchor Site']
   },
   {
+    id: 'ember-core-studio-site',
+    name: 'Ember Core Studio',
+    url: 'https://embercorestudio.org',
+    category: 'Highlighted',
+    description: 'The creative incubator. An umbrella ecosystem turning vision into scalable application formats.',
+    purpose: 'A single, SBA-aligned showcase displaying all proprietary models, saas applications, and custom frameworks.',
+    targetAudience: 'SBA Officers, Angel Funders, Startup Accelerators.',
+    developmentStory: 'Evolved from a rental agency into a clean-tech incubator, serving as a unified testament to rapid AI creation.',
+    tags: ['Incubator Portfolio', 'Corporate Brand', 'App Engine']
+  },
+  {
+    id: 'maternity-magic',
+    name: 'Maternity Magic',
+    url: 'https://maternitymagic.netlify.app',
+    category: 'Niche Utility',
+    description: 'Curated wellness navigator tracking nutritional and energetic shifts during pregnancy.',
+    purpose: 'Allows expectant mothers to track daily iron, hydration, and positive mindset checkpoints easily.',
+    targetAudience: 'Pregnant women, maternity advocates, and holistic birth support partners.',
+    developmentStory: 'Created to stand in stark contrast to clinical clinical interfaces, providing a warm, reassuring environment.',
+    tags: ['Maternity Log', 'Holistic Wellness', 'Parent Tools']
+  },
+  {
     id: 'audio-love-letter',
     name: 'Audio Love Letter',
     url: 'https://audioloveletter.lovable.app',
@@ -122,17 +144,6 @@ export const APPS_DATA: AppProject[] = [
     tags: []
   },
   {
-    id: 'maternity-magic',
-    name: 'Maternity Magic',
-    url: 'https://maternitymagic.netlify.app',
-    category: 'Niche Utility',
-    description: 'Curated wellness navigator tracking nutritional and energetic shifts during pregnancy.',
-    purpose: 'Allows expectant mothers to track daily iron, hydration, and positive mindset checkpoints easily.',
-    targetAudience: 'Pregnant women, maternity advocates, and holistic birth support partners.',
-    developmentStory: 'Created to stand in stark contrast to clinical clinical interfaces, providing a warm, reassuring environment.',
-    tags: ['Maternity Log', 'Holistic Wellness', 'Parent Tools']
-  },
-  {
     id: 'identity-forge',
     name: 'Identity Forge AI',
     url: 'https://identityforgeai.netlify.app',
@@ -177,17 +188,6 @@ export const APPS_DATA: AppProject[] = [
     tags: []
   },
   {
-    id: 'ember-core-studio-site',
-    name: 'Ember Core Studio',
-    url: 'https://embercorestudio.org',
-    category: 'Highlighted',
-    description: 'The creative incubator. An umbrella ecosystem turning vision into scalable application formats.',
-    purpose: 'A single, SBA-aligned showcase displaying all proprietary models, saas applications, and custom frameworks.',
-    targetAudience: 'SBA Officers, Angel Funders, Startup Accelerators.',
-    developmentStory: 'Evolved from a rental agency into a clean-tech incubator, serving as a unified testament to rapid AI creation.',
-    tags: ['Incubator Portfolio', 'Corporate Brand', 'App Engine']
-  },
-  {
     id: 'opulence-society',
     name: 'Opulence Society',
     url: 'https://opulencesociety.netlify.app',
@@ -202,17 +202,6 @@ export const APPS_DATA: AppProject[] = [
     id: 'dating-pool-9to5',
     name: 'The 9 to 5 Dating Pool',
     url: 'https://the9to5datingpool.lovable.app',
-    category: 'Core Saas',
-    description: '',
-    purpose: '',
-    targetAudience: '',
-    developmentStory: '',
-    tags: []
-  },
-  {
-    id: 'dating-pool-9to5-run',
-    name: 'The 9 to 5 Dating Pool (Cloud Run)',
-    url: 'https://the-9-to-5-dating-pool-287617961746.us-west2.run.app',
     category: 'Core Saas',
     description: '',
     purpose: '',
@@ -246,6 +235,17 @@ export const APPS_DATA: AppProject[] = [
     id: 'price-source',
     name: 'Price Source tool',
     url: 'https://price-source-287617961746.us-west2.run.app',
+    category: 'Core Saas',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'dating-pool-9to5-run',
+    name: 'The 9 to 5 Dating Pool (Cloud Run)',
+    url: 'https://the-9-to-5-dating-pool-287617961746.us-west2.run.app',
     category: 'Core Saas',
     description: '',
     purpose: '',
@@ -302,6 +302,94 @@ export const APPS_DATA: AppProject[] = [
     name: 'Re-Lie',
     url: 'https://re-lie-287617961746.us-west2.run.app',
     category: 'Niche Utility',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'sentinel-osint',
+    name: 'Sentinel Personal Safety OSINT Dashboard',
+    url: 'https://sentinel-personal-safety-osint-dashboard-287617961746.us-west2.run.app',
+    category: 'Niche Utility',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'clean-slate',
+    name: 'CleanSlate',
+    url: 'https://cleanslate-287617961746.us-west2.run.app',
+    category: 'Core Saas',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'fairshare-navigator',
+    name: 'FairShare Navigator: Child Support & Family Law Aide',
+    url: 'https://fairshare-navigator-child-support-family-law-aide-287617961746.us-west2.run.app',
+    category: 'Niche Utility',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'covercraft-ai',
+    name: 'CoverCraft AI',
+    url: 'https://covercraft-ai-287617961746.us-west2.run.app',
+    category: 'Core Saas',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'ceremony-officiant',
+    name: 'Ceremony Officiant Portfolio',
+    url: 'https://ceremony-officiant-portfolio-287617961746.us-west2.run.app',
+    category: 'Community & Culture',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'open-people-search',
+    name: 'OpenPeopleSearch',
+    url: 'https://openpeoplesearch-287617961746.us-west2.run.app',
+    category: 'Niche Utility',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'cellpulse-intelligence',
+    name: 'CellPulse Intelligence',
+    url: 'https://cellpulse-intelligence-287617961746.us-west2.run.app',
+    category: 'Niche Utility',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
+  },
+  {
+    id: 'vanguard-elite-connections',
+    name: 'Vanguard Elite Connections',
+    url: 'https://vanguard-elite-connections-287617961746.us-west2.run.app',
+    category: 'Community & Culture',
     description: '',
     purpose: '',
     targetAudience: '',
