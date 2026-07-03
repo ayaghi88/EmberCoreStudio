@@ -232,7 +232,7 @@ export default function App() {
                 <Award className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-4xl font-display font-extrabold text-white">$100K</p>
+                <p className="text-4xl font-display font-extrabold text-white">$1.5M+</p>
                 <p className="text-xs text-clarity-400 uppercase tracking-widest font-mono mt-1">SBA Target Capital</p>
               </div>
             </div>
