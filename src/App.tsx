@@ -562,7 +562,7 @@ export default function App() {
                   </div>
 
                   <h3 className="font-display font-bold text-xl text-white group-hover:text-ember-400 transition-colors mb-2">{app.name}</h3>
-                  <p className="text-xs text-clarity-300 leading-relaxed line-clamp-3 mb-4">{app.description || "Details updating soon. Profile currently offline."}</p>
+                  <p className="text-xs text-clarity-300 leading-relaxed line-clamp-3 mb-4">{app.description || "Details and application profile updating soon."}</p>
                   
                   <div className="flex flex-wrap gap-1.5">
                     {app.tags.slice(0, 3).map(tag => (
@@ -627,7 +627,7 @@ export default function App() {
               </div>               <div className="p-8 space-y-6 max-h-[60vh] overflow-y-auto">
                 <div>
                   <h4 className="text-xs uppercase tracking-widest text-prosperity-400 font-mono font-bold mb-2">Summary Description</h4>
-                  <p className="text-sm text-clarity-200 leading-relaxed">{selectedApp.description || "Details updating soon. Profile currently offline."}</p>
+                  <p className="text-sm text-clarity-200 leading-relaxed">{selectedApp.description || "Details and application profile updating soon."}</p>
                 </div>
 
                 {(selectedApp.purpose || selectedApp.targetAudience) && (
@@ -667,7 +667,7 @@ export default function App() {
 
               <div className="p-8 border-t border-clarity-50/10 bg-base-950 flex flex-col sm:flex-row gap-4 items-center justify-between">
                 <div className="text-xs text-prosperity-400 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-prosperity-500 animate-pulse" /> {selectedApp.url ? "operational & tested" : "offline profile"}
+                  <span className="w-2 h-2 rounded-full bg-prosperity-500 animate-pulse" /> operational & tested
                 </div>
                 <div className="flex w-full sm:w-auto gap-3">
                   <button 

@@ -69,57 +69,57 @@ export const APPS_DATA: AppProject[] = [
   {
     id: 'audio-love-letter',
     name: 'Audio Love Letter',
-    url: '',
+    url: 'https://audioloveletter.lovable.app',
     category: 'Core Saas',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Audio Keep-sakes', 'Journals', 'Interactive Audio']
+    tags: []
   },
   {
     id: 'health-care',
     name: 'Ambers Healthcare',
-    url: '',
+    url: 'https://ambershealthcare.com',
     category: 'Core Saas',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Health Tech', 'Benefits Hub', 'Independent Wellness']
+    tags: []
   },
   {
     id: 'austin-lol',
     name: 'Austins LOL',
-    url: '',
+    url: 'https://austinslol.lovable.app',
     category: 'Community & Culture',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Meme Engine', 'Comic Hub', 'Viral Outreach']
+    tags: []
   },
   {
     id: 'celebrate-face',
     name: 'Celebrate My Face',
-    url: '',
+    url: 'https://celebrate-my-face.lovable.app',
     category: 'Niche Utility',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Self-care Companion', 'Ingredient Tracker', 'Confidence Journal']
+    tags: []
   },
   {
     id: 'social-bridge',
     name: 'Social Bridge Hub',
-    url: '',
+    url: 'https://socialbridgehub.netlify.app',
     category: 'Community & Culture',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Mutual Aid', 'Volunteering', 'Hyper-local Map']
+    tags: []
   },
   {
     id: 'maternity-magic',
@@ -135,46 +135,46 @@ export const APPS_DATA: AppProject[] = [
   {
     id: 'identity-forge',
     name: 'Identity Forge AI',
-    url: '',
+    url: 'https://identityforgeai.netlify.app',
     category: 'Core Saas',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Avatar Synthesis', 'Professional Styling', 'Employment Tools']
+    tags: []
   },
   {
     id: 'kin-seeker',
     name: 'KinSeeker',
-    url: '',
+    url: 'https://kinseeker.netlify.app',
     category: 'Community & Culture',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Heritage Database', 'Lineage Map', 'Oral History Archive']
+    tags: []
   },
   {
     id: 'preserv-ai',
     name: 'Preserv-AI',
-    url: '',
+    url: 'https://preserv-ai.netlify.app',
     category: 'Niche Utility',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Smart Organizer', 'Metadata tagging', 'Office Utility']
+    tags: []
   },
   {
     id: 'nexus-discovery',
     name: 'Nexus Investigative Discovery',
-    url: '',
+    url: 'https://nexusinvestigativediscovery.netlify.app',
     category: 'Niche Utility',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Timeline Network', 'Event Mapping', 'Investigative Hub']
+    tags: []
   },
   {
     id: 'ember-core-studio-site',
@@ -190,100 +190,122 @@ export const APPS_DATA: AppProject[] = [
   {
     id: 'opulence-society',
     name: 'Opulence Society',
-    url: '',
+    url: 'https://opulencesociety.netlify.app',
     category: 'Community & Culture',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Luxury Network', 'Aesthetic Curator', 'Elite Group']
+    tags: []
   },
   {
     id: 'dating-pool-9to5',
     name: 'The 9 to 5 Dating Pool',
-    url: '',
+    url: 'https://the9to5datingpool.lovable.app',
     category: 'Core Saas',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Coordinated Dating', 'CalSync', 'Professionals Matching']
+    tags: []
+  },
+  {
+    id: 'dating-pool-9to5-run',
+    name: 'The 9 to 5 Dating Pool (Cloud Run)',
+    url: 'https://the-9-to-5-dating-pool-287617961746.us-west2.run.app',
+    category: 'Core Saas',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
   },
   {
     id: 'echo-quietly',
     name: 'Echo Quietly',
-    url: '',
+    url: 'https://echoquietly.lovable.app',
     category: 'Niche Utility',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Acoustic Focus', 'Neurodivergent Tools', 'Learning Aids']
+    tags: []
   },
   {
     id: 'don-julio-beats',
     name: 'Creme Don Julio Beats Hub',
-    url: '',
+    url: 'https://creme-donjulio-beats-hub.lovable.app',
     category: 'Community & Culture',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['MIDI Editor', 'Beats Sandbox', 'Auditory Hub']
+    tags: []
   },
   {
     id: 'price-source',
     name: 'Price Source tool',
-    url: '',
+    url: 'https://price-source-287617961746.us-west2.run.app',
     category: 'Core Saas',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Procurement Tracker', 'Arbitrage tool', 'Business Margin']
+    tags: []
   },
   {
     id: 'shangri-la-reads',
     name: 'Shangri-La Reads',
-    url: '',
+    url: 'https://shangri-la-reads-287617961746.us-west2.run.app',
     category: 'Niche Utility',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Reading Sandbox', 'Typography Spec', 'Self-publishing']
+    tags: []
   },
   {
     id: 'kover',
     name: 'Kover AI Support',
-    url: '',
+    url: 'https://kover-287617961746.us-west2.run.app',
     category: 'Core Saas',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Cover Letter Tech', 'Job Finder Tools', 'Career Growth']
+    tags: []
   },
   {
     id: 'uv-de-soupe',
     name: 'Creme UV de Soupe',
-    url: '',
+    url: 'https://creme-uv-de-soupe-287617961746.us-west2.run.app',
     category: 'Niche Utility',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Kitchen Logger', 'Recipe Designer', 'Foodie Tech']
+    tags: []
   },
   {
     id: 'connect-hire-win',
     name: 'Connect Hire Win',
-    url: '',
+    url: 'https://connect-hire-win.lovable.app',
     category: 'Core Saas',
     description: '',
     purpose: '',
     targetAudience: '',
     developmentStory: '',
-    tags: ['Interview Prep', 'Career Tracker', 'Hiring Boards']
+    tags: []
+  },
+  {
+    id: 're-lie',
+    name: 'Re-Lie',
+    url: 'https://re-lie-287617961746.us-west2.run.app',
+    category: 'Niche Utility',
+    description: '',
+    purpose: '',
+    targetAudience: '',
+    developmentStory: '',
+    tags: []
   }
 ];
