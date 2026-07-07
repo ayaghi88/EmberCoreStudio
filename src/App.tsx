@@ -558,7 +558,9 @@ export default function App() {
                     }`}>
                       {app.category}
                     </span>
-                    <span className="text-[10px] font-mono text-clarity-500">Live URL Profile</span>
+                    <span className="text-[10px] font-mono text-clarity-500">
+                      {app.isActive ? 'Live URL Profile' : 'Concept Blueprint'}
+                    </span>
                   </div>
 
                   <h3 className="font-display font-bold text-xl text-white group-hover:text-ember-400 transition-colors mb-2">{app.name}</h3>
@@ -576,8 +578,9 @@ export default function App() {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-clarity-50/5 flex items-center justify-between">
-                  <span className="text-[10px] text-prosperity-400 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-prosperity-500" /> Active Platform
+                  <span className={`text-[10px] flex items-center gap-1 ${app.isActive ? 'text-prosperity-400' : 'text-clarity-500'}`}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${app.isActive ? 'bg-prosperity-500 animate-pulse' : 'bg-clarity-600'}`} />
+                    {app.isActive ? 'Active Platform' : 'Acquisition Target'}
                   </span>
                   <div className="inline-flex items-center gap-1 text-xs text-clarity-500 hover:text-white font-medium transition-colors">
                     Analyze Deck <Eye className="w-3.5 h-3.5" />
@@ -668,8 +671,9 @@ export default function App() {
               </div>
 
               <div className="p-8 border-t border-clarity-50/10 bg-base-950 flex flex-col sm:flex-row gap-4 items-center justify-between">
-                <div className="text-xs text-prosperity-400 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-prosperity-500 animate-pulse" /> operational & tested
+                <div className={`text-xs flex items-center gap-1.5 ${selectedApp.isActive ? 'text-prosperity-400' : 'text-clarity-500'}`}>
+                  <span className={`w-2 h-2 rounded-full ${selectedApp.isActive ? 'bg-prosperity-500 animate-pulse' : 'bg-clarity-600'}`} />
+                  {selectedApp.isActive ? 'operational & tested' : 'concept sandbox / buyout target'}
                 </div>
                 <div className="flex w-full sm:w-auto gap-3">
                   <button 
@@ -678,7 +682,7 @@ export default function App() {
                   >
                     Close Analysis
                   </button>
-                  {selectedApp.url && (
+                  {selectedApp.isActive && selectedApp.url ? (
                     <a 
                       href={selectedApp.url} 
                       target="_blank" 
@@ -686,6 +690,14 @@ export default function App() {
                       className="flex-1 sm:flex-none px-6 py-2.5 bg-gradient-to-r from-ember-500 to-royal-600 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all hover:opacity-90"
                     >
                       Launch Live Site <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  ) : (
+                    <a 
+                      href="#connect" 
+                      onClick={() => setSelectedApp(null)}
+                      className="flex-1 sm:flex-none px-6 py-2.5 bg-clarity-50/5 text-clarity-300 hover:text-white hover:bg-clarity-50/10 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all border border-clarity-50/10 text-center"
+                    >
+                      Inquire For Acquisition <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
                 </div>

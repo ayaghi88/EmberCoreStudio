@@ -8,6 +8,7 @@ export interface AppProject {
   targetAudience: string;
   developmentStory: string;
   tags: string[];
+  isActive?: boolean;
 }
 
 export const APPS_DATA: AppProject[] = [
@@ -20,7 +21,8 @@ export const APPS_DATA: AppProject[] = [
     purpose: 'To supplement classroom education by adapting topics into custom interactive models, ensuring no student is left behind.',
     targetAudience: 'Students, educators, and schools seeking personalized, interactive tutoring companions.',
     developmentStory: 'Created as the ultimate tool I wished existed during school and onboarding, facilitating clear and fast knowledge compression.',
-    tags: ['AI Learning', 'EdTech', 'Interactive Slate', 'SBA Funding Target']
+    tags: ['AI Learning', 'EdTech', 'Interactive Slate', 'SBA Funding Target'],
+    isActive: false
   },
   {
     id: 'shrink-and-send',
@@ -31,7 +33,8 @@ export const APPS_DATA: AppProject[] = [
     purpose: 'Instantly reduce the size of images, audio, and videos without quality degradation, optimized directly for creators and publishing portals.',
     targetAudience: 'Content creators, editors, self-publishers, and digital agencies.',
     developmentStory: 'Engineered after countless frustrations with large file size limitations when uploading manuscript packages and media releases.',
-    tags: ['File Compression', 'Media Optimizer', 'Mobile Web App', 'Creator Tools']
+    tags: ['File Compression', 'Media Optimizer', 'Mobile Web App', 'Creator Tools'],
+    isActive: false
   },
   {
     id: 'text-detox-alchemy',
@@ -42,7 +45,8 @@ export const APPS_DATA: AppProject[] = [
     purpose: 'Instantly sanitize copy, converting messy text into formatted, standardized documents with surgical precision.',
     targetAudience: 'Authors, bloggers, publishers, and transcriptionists.',
     developmentStory: 'Developed to eliminate the painstaking labor of manually debugging text files of non-standard symbols and spacing issues prior to book layout.',
-    tags: ['Text Hygiene', 'Publishing Preparedness', 'Formatting Sanitizer', 'Data Cleaning']
+    tags: ['Text Hygiene', 'Publishing Preparedness', 'Formatting Sanitizer', 'Data Cleaning'],
+    isActive: false
   },
   {
     id: 'authors-linguist',
@@ -53,7 +57,8 @@ export const APPS_DATA: AppProject[] = [
     purpose: 'Bridging structural barriers by converting manuscripts, training programs, and documents internationalized with semantic accuracy.',
     targetAudience: 'Novelist, educators, content teams, and indie publishers looking to scale globally.',
     developmentStory: 'Conceived while navigating the hurdles of independent international publishing, where translating drafts seamlessly without losing cultural nuance is key.',
-    tags: ['Translation Suite', 'Global Content', 'Creative Translation', 'Multi-Language']
+    tags: ['Translation Suite', 'Global Content', 'Creative Translation', 'Multi-Language'],
+    isActive: false
   },
   {
     id: 'amber-yaghi-org',
@@ -64,7 +69,8 @@ export const APPS_DATA: AppProject[] = [
     purpose: 'Acts as the single source of truth for professional history, technology advocacy, and community sponsorship.',
     targetAudience: 'Stakeholders, Angel Investors, Business Incubators, and SBA Officers.',
     developmentStory: 'Constructed to act as a clear personal brand anchor that frames everything Ember Core Studio creates.',
-    tags: ['Executive Hub', 'Identity', 'Sponsor Profile', 'Anchor Site']
+    tags: ['Executive Hub', 'Identity', 'Sponsor Profile', 'Anchor Site'],
+    isActive: true
   },
   {
     id: 'ember-core-studio-site',
@@ -75,7 +81,8 @@ export const APPS_DATA: AppProject[] = [
     purpose: 'A single, SBA-aligned showcase displaying all proprietary models, saas applications, and custom frameworks.',
     targetAudience: 'SBA Officers, Angel Funders, Startup Accelerators.',
     developmentStory: 'Evolved from a rental agency into a clean-tech incubator, serving as a unified testament to rapid AI creation.',
-    tags: ['Incubator Portfolio', 'Corporate Brand', 'App Engine']
+    tags: ['Incubator Portfolio', 'Corporate Brand', 'App Engine'],
+    isActive: false
   },
   {
     id: 'maternity-magic',
@@ -86,7 +93,8 @@ export const APPS_DATA: AppProject[] = [
     purpose: 'Allows expectant mothers to track daily iron, hydration, and positive mindset checkpoints easily.',
     targetAudience: 'Pregnant women, maternity advocates, and holistic birth support partners.',
     developmentStory: 'Created to stand in stark contrast to clinical clinical interfaces, providing a warm, reassuring environment.',
-    tags: ['Maternity Log', 'Holistic Wellness', 'Parent Tools']
+    tags: ['Maternity Log', 'Holistic Wellness', 'Parent Tools'],
+    isActive: false
   },
   {
     id: 'audio-love-letter',
