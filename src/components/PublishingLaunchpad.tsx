@@ -13,7 +13,9 @@ import {
   DollarSign,
   AlertTriangle,
   ChevronRight,
-  Award
+  Award,
+  Mail,
+  Lock
 } from 'lucide-react';
 
 export default function PublishingLaunchpad() {
@@ -133,6 +135,18 @@ ${intakeStatus !== 'ready' && !services.copyEditing ? '- NOTE: It is highly reco
     navigator.clipboard.writeText(getIntakeSummaryText());
     setCopiedIntake(true);
     setTimeout(() => setCopiedIntake(false), 2000);
+  };
+
+  const handleEmailProposal = () => {
+    const subject = encodeURIComponent(`Ember Core Studio - Self-Publishing Service Proposal`);
+    const body = encodeURIComponent(getProposalText());
+    window.location.href = `mailto:contact@embercorestudio.org?subject=${subject}&body=${body}`;
+  };
+
+  const handleEmailIntake = () => {
+    const subject = encodeURIComponent(`Ember Core Studio - Client Intake Form: ${intakeName || 'Author'}`);
+    const body = encodeURIComponent(getIntakeSummaryText());
+    window.location.href = `mailto:contact@embercorestudio.org?subject=${subject}&body=${body}`;
   };
 
   const syncIntakeToServices = () => {
@@ -549,26 +563,44 @@ ${intakeStatus !== 'ready' && !services.copyEditing ? '- NOTE: It is highly reco
             {/* Copyable generated Proposal panel */}
             {isProposalGenerated && (
               <div className="p-5 rounded-2xl bg-base-950 border border-royal-500/20 space-y-4 animate-fadeIn">
-                <div className="flex justify-between items-center border-b border-clarity-50/10 pb-3">
+                <div className="flex flex-col sm:flex-row gap-2 justify-between items-start sm:items-center border-b border-clarity-50/10 pb-3">
                   <span className="text-[10px] font-mono tracking-widest text-royal-400 font-bold uppercase">PROPOSAL DOCUMENT READY</span>
-                  <button 
-                    onClick={handleCopyProposal}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-clarity-50/10 text-white text-xs hover:bg-clarity-50/20 active:scale-95 transition-all"
-                  >
-                    {copiedProposal ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-prosperity-400" />
-                        <span className="text-prosperity-400 font-bold">Copied!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5" />
-                        <span>Copy To Clipboard</span>
-                      </>
-                    )}
-                  </button>
+                  <div className="flex flex-wrap gap-2">
+                    <button 
+                      onClick={handleEmailProposal}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-royal-600/20 hover:bg-royal-600/40 border border-royal-500/30 text-white text-xs active:scale-95 transition-all font-semibold"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-royal-400" />
+                      <span>Email to Studio</span>
+                    </button>
+                    <button 
+                      onClick={handleCopyProposal}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-clarity-50/10 text-white text-xs hover:bg-clarity-50/20 active:scale-95 transition-all font-semibold"
+                    >
+                      {copiedProposal ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-prosperity-400" />
+                          <span className="text-prosperity-400">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3.5 h-3.5 text-clarity-400" />
+                          <span>Copy To Clipboard</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
-                <pre className="text-[10px] leading-relaxed text-clarity-400 font-mono bg-base-900 p-4 rounded-lg overflow-x-auto whitespace-pre-wrap select-all max-h-72 overflow-y-auto">
+
+                {/* Privacy & Secure Data flow box */}
+                <div className="p-3.5 rounded-xl bg-base-900/80 border border-clarity-50/5 flex items-start gap-2.5 text-[11px] text-clarity-400 leading-normal">
+                  <Lock className="w-4 h-4 text-royal-400 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="text-white font-semibold">Where does this proposal go?</span> Ember Core Studio respects your complete data privacy. All choices and pricing configurations are processed 100% locally in your browser. Clicking <strong className="text-white">Email to Studio</strong> will open a pre-filled draft addressed to <span className="text-royal-400 font-mono font-semibold">contact@embercorestudio.org</span>, or you can manually copy and send it.
+                  </div>
+                </div>
+
+                <pre className="text-[10px] leading-relaxed text-clarity-400 font-mono bg-base-900 p-4 rounded-lg overflow-x-auto whitespace-pre-wrap select-all max-h-72 overflow-y-auto border border-clarity-50/5">
                   {getProposalText()}
                 </pre>
               </div>
@@ -802,23 +834,40 @@ ${intakeStatus !== 'ready' && !services.copyEditing ? '- NOTE: It is highly reco
                 </div>
 
                 {/* Action buttons */}
-                <div className="space-y-3 pt-2">
+                <div className="space-y-4 pt-2">
+                  <button 
+                    onClick={handleEmailIntake}
+                    className="w-full py-3.5 bg-gradient-to-r from-prosperity-600 to-royal-600 hover:from-prosperity-500 hover:to-royal-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all shadow-md font-semibold text-xs"
+                  >
+                    <Mail className="w-4 h-4 text-white" />
+                    <span>Email Intake Directly to Studio</span>
+                  </button>
+
                   <button 
                     onClick={handleCopyIntake}
-                    className="w-full py-3 bg-clarity-50/5 hover:bg-clarity-50/10 text-white font-bold rounded-xl border border-clarity-50/10 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3 bg-clarity-50/5 hover:bg-clarity-50/10 text-white font-bold rounded-xl border border-clarity-50/10 transition-all flex items-center justify-center gap-2 text-xs"
                   >
                     {copiedIntake ? (
                       <>
                         <Check className="w-4 h-4 text-prosperity-400" />
-                        <span className="text-prosperity-400">Copied Summary!</span>
+                        <span className="text-prosperity-400 font-semibold">Copied Summary!</span>
                       </>
                     ) : (
                       <>
-                        <Copy className="w-4 h-4" />
-                        <span>Copy Intake Summary</span>
+                        <Copy className="w-4 h-4 text-clarity-400" />
+                        <span>Copy Intake Summary manually</span>
                       </>
                     )}
                   </button>
+
+                  {/* Privacy & Secure Data flow box */}
+                  <div className="p-3.5 rounded-xl bg-base-950 border border-clarity-50/10 flex items-start gap-2.5 text-[11px] text-clarity-400 text-left leading-normal">
+                    <Lock className="w-4 h-4 text-prosperity-400 shrink-0 mt-0.5" />
+                    <div>
+                      <span className="text-white font-semibold">Where does this form go?</span> Ember Core Studio prioritizes your data privacy. All answers are kept 100% locally on your computer. Clicking <strong className="text-white">Email Intake Directly</strong> initiates a pre-filled draft addressed to <span className="text-prosperity-400 font-mono font-semibold">contact@embercorestudio.org</span>, or you can manually copy and send the summary.
+                    </div>
+                  </div>
+
                   <button 
                     onClick={() => setIntakeSubmitted(false)}
                     className="text-clarity-500 hover:text-white transition-colors underline block mx-auto text-[10px]"

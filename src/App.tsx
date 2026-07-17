@@ -91,7 +91,7 @@ export default function App() {
               <span className="font-display font-extrabold text-lg uppercase tracking-tight text-white leading-none">
                 Ember <span className="text-ember-500">Core</span>
               </span>
-              <span className="text-[10px] uppercase font-mono tracking-widest text-prosperity-400 font-bold">Publishing Studio</span>
+              <span className="text-[10px] uppercase font-mono tracking-widest text-prosperity-400 font-bold">Studio</span>
             </div>
           </a>
 
