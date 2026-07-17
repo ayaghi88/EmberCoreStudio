@@ -127,25 +127,72 @@ export default function App() {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div 
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden glass-panel border-t border-clarity-50/10 px-6 py-6 flex flex-col gap-4 absolute top-20 left-0 w-full bg-base-950/95"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="lg:hidden border-b border-t border-clarity-50/10 px-6 py-6 flex flex-col gap-4 absolute top-20 left-0 w-full bg-[#05070f] shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50"
             >
-              <a href="#publishing" onClick={() => setMobileMenuOpen(false)} className="text-base font-semibold text-white">Publishing Services</a>
-              <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Origin Story</a>
-              <a href="#flagship" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Flagship App</a>
-              <a href="#creations" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Apps Showcase</a>
-              <a href="#investors" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">SBA Prospectus</a>
-              <a href="#connect" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Get in Touch</a>
-              <a 
-                href="https://github.com/sponsors/ayaghi88" 
-                target="_blank" 
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-ember-500 to-royal-500 text-white rounded-lg text-sm font-bold uppercase tracking-wider"
-              >
-                <HeartHandshake className="w-4 h-4" /> Sponsor Now
-              </a>
+              <div className="flex flex-col gap-1">
+                <a 
+                  href="#publishing" 
+                  onClick={() => setMobileMenuOpen(false)} 
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-clarity-50/5 text-base font-semibold text-white transition-all"
+                >
+                  <BookOpen className="w-5 h-5 text-ember-500 shrink-0" />
+                  <span>Publishing Services</span>
+                </a>
+                <a 
+                  href="#about" 
+                  onClick={() => setMobileMenuOpen(false)} 
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-clarity-50/5 text-base font-medium text-clarity-200 hover:text-white transition-all"
+                >
+                  <Compass className="w-5 h-5 text-royal-400 shrink-0" />
+                  <span>Origin Story</span>
+                </a>
+                <a 
+                  href="#flagship" 
+                  onClick={() => setMobileMenuOpen(false)} 
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-clarity-50/5 text-base font-medium text-clarity-200 hover:text-white transition-all"
+                >
+                  <Cpu className="w-5 h-5 text-prosperity-400 shrink-0" />
+                  <span>Flagship App</span>
+                </a>
+                <a 
+                  href="#creations" 
+                  onClick={() => setMobileMenuOpen(false)} 
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-clarity-50/5 text-base font-medium text-clarity-200 hover:text-white transition-all"
+                >
+                  <Code className="w-5 h-5 text-ember-400 shrink-0" />
+                  <span>Apps Showcase</span>
+                </a>
+                <a 
+                  href="#investors" 
+                  onClick={() => setMobileMenuOpen(false)} 
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-clarity-50/5 text-base font-medium text-clarity-200 hover:text-white transition-all"
+                >
+                  <TrendingUp className="w-5 h-5 text-royal-500 shrink-0" />
+                  <span>SBA Prospectus</span>
+                </a>
+                <a 
+                  href="#connect" 
+                  onClick={() => setMobileMenuOpen(false)} 
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-clarity-50/5 text-base font-medium text-clarity-200 hover:text-white transition-all"
+                >
+                  <Mail className="w-5 h-5 text-prosperity-500 shrink-0" />
+                  <span>Get in Touch</span>
+                </a>
+              </div>
+              <div className="pt-2 border-t border-clarity-50/5">
+                <a 
+                  href="https://github.com/sponsors/ayaghi88" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 px-4 py-3.5 bg-gradient-to-r from-ember-500 to-royal-500 text-white rounded-xl text-sm font-bold uppercase tracking-wider active:scale-[0.98] transition-all shadow-md"
+                >
+                  <HeartHandshake className="w-4 h-4 text-white" /> Sponsor Now
+                </a>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
