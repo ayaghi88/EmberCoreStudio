@@ -43,6 +43,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<FilterCategory>('All');
   const [selectedApp, setSelectedApp] = useState<AppProject | null>(null);
+  const [termsOpen, setTermsOpen] = useState(false);
   
   // Email-to-clipboard copy feature
   const [copied, setCopied] = useState(false);
@@ -720,6 +721,120 @@ export default function App() {
         )}
       </AnimatePresence>
 
+      {/* TERMS OF SERVICE MODAL */}
+      <AnimatePresence>
+        {termsOpen && (
+          <div className="fixed inset-0 z-55 flex items-center justify-center p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setTermsOpen(false)}
+              className="absolute inset-0 bg-base-950/85 backdrop-blur-md"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-2xl bg-base-900 border border-clarity-50/15 rounded-3xl overflow-hidden shadow-2xl z-10"
+            >
+              <div className="p-8 border-b border-clarity-50/10 flex justify-between items-start">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-royal-500/10 border border-royal-500/20 text-royal-400 text-[10px] uppercase font-mono font-bold mb-2">
+                    Legal Protection
+                  </div>
+                  <h3 className="text-2xl font-display font-extrabold text-white">Terms of Service</h3>
+                  <p className="text-xs text-clarity-400 mt-1">Ember Core Studio — Custom Book Packaging & Self-Publishing Services</p>
+                </div>
+                <button 
+                  onClick={() => setTermsOpen(false)} 
+                  className="p-2 text-clarity-400 hover:text-white hover:bg-clarity-50/5 rounded-xl transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="p-8 space-y-6 max-h-[55vh] overflow-y-auto text-xs text-clarity-300 leading-relaxed">
+                <p className="text-clarity-400">
+                  Welcome to Ember Core Studio. Please read these terms carefully. By estimating, configuring, or submitting manuscripts through our publishing accelerator, you agree to these terms of service.
+                </p>
+
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-ember-400 mb-1">
+                      1. 100% Royalty Ownership Guarantee
+                    </h4>
+                    <p>
+                      Ember Core Studio operates on a pure flat-fee model. We hold <strong>0% claims</strong> to your future book sales, retail royalties, or passive income streams. You retain 100% copyright, intellectual property, account credentials, and publishing distribution control.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-royal-400 mb-1">
+                      2. Service Scope & Custom Packaging
+                    </h4>
+                    <p>
+                      We provide bespoke interior typesetting, layout formatting (epub & PDF), cover design packaging, and keyword metadata setup as defined in your selected contract estimator. Our flat Core Technical Package covers up to 80,000 words; larger works require custom review.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-prosperity-400 mb-1">
+                      3. Flat-Fee Payments & Commencement Deposits
+                    </h4>
+                    <p>
+                      To allocate our design slot and technical resources, a 50% non-refundable commencement deposit is due upon contract finalization. The remaining 50% payment is due only upon final manuscript layout delivery and platform approval.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-clarity-400 mb-1">
+                      4. Custom ISBN & Bowker Registration Rights
+                    </h4>
+                    <p>
+                      Any independent 13-digit ISBN purchased or registered through our services is legally purchased through Bowker and registered 100% under your own custom publishing house name/imprint. It remains your permanent corporate asset of record.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-ember-400 mb-1">
+                      5. Local Privacy & Zero Data Retention
+                    </h4>
+                    <p>
+                      Ember Core Studio respects complete client data privacy. All interactive selections, manuscript word count inputs, and form details are processed 100% locally inside your web browser. No drafts, manuscripts, or contact details are saved to secondary backend databases or cloud environments. Data is only transmitted directly to <strong>contact@embercorestudio.org</strong> when you voluntarily choose to copy or email your completed summaries.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-royal-400 mb-1">
+                      6. Formatting Approvals & Revisions
+                    </h4>
+                    <p>
+                      We guarantee platform file acceptance on Amazon KDP and Lulu. The Author is responsible for verifying spelling, punctuation, and final print proofing. Substantive manuscript text changes requested after formatting work has commenced may incur additional formatting adjustment fees.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-8 border-t border-clarity-50/10 bg-base-950 flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <span className="text-[10px] font-mono text-clarity-500 uppercase tracking-wider">
+                  Effective: July 17, 2026
+                </span>
+                <div className="flex gap-3">
+                  <button 
+                    onClick={() => setTermsOpen(false)}
+                    className="px-6 py-2.5 bg-gradient-to-r from-royal-600 to-ember-600 text-white font-bold rounded-xl text-xs flex items-center justify-center transition-all hover:opacity-95"
+                  >
+                    I Understand & Agree
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* SECTION: EDUCATIONAL TRAINING FOR STUDENTS & TEAMS */}
       <section id="education" className="py-24 border-t border-clarity-50/10 bg-base-900/10 relative">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -991,9 +1106,17 @@ export default function App() {
             </span>
           </div>
           
-          <p className="text-xs uppercase tracking-widest text-clarity-300">
-            © 2025 Ember Core Studio. Built as proof of concept.
-          </p>
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <p className="text-xs uppercase tracking-widest text-clarity-300">
+              © 2025 Ember Core Studio. Built as proof of concept.
+            </p>
+            <button 
+              onClick={() => setTermsOpen(true)}
+              className="text-[11px] text-royal-400 hover:text-royal-300 underline font-mono tracking-wide transition-colors cursor-pointer self-center md:self-start"
+            >
+              Terms of Service
+            </button>
+          </div>
 
           <div className="flex gap-6">
             <a href="https://github.com/ayaghi88" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
