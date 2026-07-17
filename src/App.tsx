@@ -33,6 +33,7 @@ import {
   Check
 } from 'lucide-react';
 import { APPS_DATA, AppProject } from './data';
+import PublishingLaunchpad from './components/PublishingLaunchpad';
 
 // --- Types ---
 type FilterCategory = 'All' | 'Highlighted' | 'Core Saas' | 'Niche Utility' | 'Community & Culture';
@@ -90,16 +91,16 @@ export default function App() {
               <span className="font-display font-extrabold text-lg uppercase tracking-tight text-white leading-none">
                 Ember <span className="text-ember-500">Core</span>
               </span>
-              <span className="text-[10px] uppercase font-mono tracking-widest text-prosperity-400 font-bold">App Incubator</span>
+              <span className="text-[10px] uppercase font-mono tracking-widest text-prosperity-400 font-bold">Publishing Studio</span>
             </div>
           </a>
 
           <div className="hidden lg:flex items-center gap-8">
-            <a href="#about" className="text-sm font-medium hover:text-ember-400 transition-colors">Overview</a>
-            <a href="#flagship" className="text-sm font-medium hover:text-royal-400 transition-colors">Flagship Showcase</a>
-            <a href="#creations" className="text-sm font-medium hover:text-prosperity-400 transition-colors">All Applications</a>
-            <a href="#education" className="text-sm font-medium hover:text-ember-400 transition-colors">Academia & Training</a>
-            <a href="#investors" className="text-sm font-medium hover:text-royal-400 transition-colors">Investor Hub</a>
+            <a href="#publishing" className="text-sm font-semibold text-white hover:text-ember-400 transition-colors border-b-2 border-ember-500 pb-1">Publishing Services</a>
+            <a href="#about" className="text-sm font-medium hover:text-royal-400 transition-colors">Origin Story</a>
+            <a href="#flagship" className="text-sm font-medium hover:text-prosperity-400 transition-colors">Flagship App</a>
+            <a href="#creations" className="text-sm font-medium hover:text-ember-400 transition-colors">Apps Showcase</a>
+            <a href="#investors" className="text-sm font-medium hover:text-royal-400 transition-colors">SBA Prospectus</a>
             <a href="#connect" className="text-sm font-medium hover:text-prosperity-400 transition-colors">Get in Touch</a>
           </div>
 
@@ -130,11 +131,11 @@ export default function App() {
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden glass-panel border-t border-clarity-50/10 px-6 py-6 flex flex-col gap-4 absolute top-20 left-0 w-full bg-base-950/95"
             >
-              <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Overview</a>
-              <a href="#flagship" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Flagship Showcase</a>
-              <a href="#creations" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">All Applications</a>
-              <a href="#education" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Academia & Training</a>
-              <a href="#investors" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Investor Hub</a>
+              <a href="#publishing" onClick={() => setMobileMenuOpen(false)} className="text-base font-semibold text-white">Publishing Services</a>
+              <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Origin Story</a>
+              <a href="#flagship" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Flagship App</a>
+              <a href="#creations" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Apps Showcase</a>
+              <a href="#investors" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">SBA Prospectus</a>
               <a href="#connect" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white">Get in Touch</a>
               <a 
                 href="https://github.com/sponsors/ayaghi88" 
@@ -155,31 +156,31 @@ export default function App() {
           
           <div className="lg:col-span-7 space-y-8 text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-royal-500/30 bg-royal-500/10 text-royal-400 text-xs font-bold uppercase tracking-widest leading-none">
-              <Sparkles className="w-3.5 h-3.5 animate-spin-pulse" /> Turning Vision into Software Engine
+              <Sparkles className="w-3.5 h-3.5 animate-spin-pulse" /> Premium Self-Publishing Tech & Design
             </div>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight text-white leading-tight">
-              We Turn Ideas Into <br />
-              <span className="text-gradient">Scalable Web Apps</span>
+              Your Manuscript, <br />
+              <span className="text-gradient">Perfectly Published.</span>
             </h1>
 
             <p className="max-w-2xl text-clarity-300 text-lg md:text-xl font-light leading-relaxed">
-              At <strong className="text-white font-medium">Ember Core Studio</strong>, we design, build, and incubate custom digital tools. 
-              Having engineered over 40+ specialized platforms, our portfolio addresses real bottlenecks in academia, professional services, retail sourcing, self-publishing, and high-performance workflows.
+              At <strong className="text-white font-medium">Ember Core Studio</strong>, we are a professional self-publishing accelerator and high-performance software laboratory. 
+              We offer bespoke book layout formatting, custom cover design, metadata keyword research, and distribution setup for Amazon KDP and Lulu. **Keep 100% of your rights and 100% of your royalties.**
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
               <a 
-                href="#creations"
+                href="#publishing"
                 className="px-8 py-4 bg-gradient-to-r from-ember-500 via-royal-500 to-prosperity-600 text-white font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-0.5"
               >
-                Explore Creative Portfolio
+                Configure Publishing Services
               </a>
               <a 
-                href="#investors"
+                href="#creations"
                 className="px-8 py-4 bg-clarity-50/5 hover:bg-clarity-50/10 text-white border border-clarity-50/10 font-bold rounded-2xl transition-all"
               >
-                SBA & Funder Profile
+                Explore Engineered Apps Portfolio
               </a>
             </div>
 
@@ -219,34 +220,34 @@ export default function App() {
           <div className="lg:col-span-5 grid grid-cols-2 gap-4">
             <div className="glass-panel p-6 rounded-2xl card-gradient-ember flex flex-col justify-between">
               <div className="w-10 h-10 rounded-lg bg-ember-600/10 border border-ember-500/20 flex items-center justify-center text-ember-400 mb-6">
-                <Zap className="w-5 h-5" />
+                <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-4xl font-display font-extrabold text-white">40+</p>
-                <p className="text-xs text-clarity-400 uppercase tracking-widest font-mono mt-1">Platforms Shipped</p>
+                <p className="text-4xl font-display font-extrabold text-white">100%</p>
+                <p className="text-xs text-clarity-400 uppercase tracking-widest font-mono mt-1">Author Royalties Kept</p>
               </div>
             </div>
 
             <div className="glass-panel p-6 rounded-2xl card-gradient-royal flex flex-col justify-between">
               <div className="w-10 h-10 rounded-lg bg-royal-600/10 border border-royal-500/20 flex items-center justify-center text-royal-400 mb-6">
-                <Award className="w-5 h-5" />
+                <BookOpen className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-4xl font-display font-extrabold text-white">$1.5M+</p>
-                <p className="text-xs text-clarity-400 uppercase tracking-widest font-mono mt-1">SBA Target Capital</p>
+                <p className="text-4xl font-display font-extrabold text-white">40+</p>
+                <p className="text-xs text-clarity-400 uppercase tracking-widest font-mono mt-1">SaaS & Formatting Tools</p>
               </div>
             </div>
 
             <div className="glass-panel p-6 rounded-2xl card-gradient-prosperity col-span-2 flex items-center justify-between">
               <div>
                 <div className="inline-flex items-center gap-1 text-[10px] text-prosperity-400 font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm bg-prosperity-500/10 border border-prosperity-500/20 mb-2">
-                  Fundraising Status
+                  Launchpad Status
                 </div>
-                <h3 className="font-display font-bold text-lg text-white">Active Deal Term</h3>
-                <p className="text-xs text-clarity-300">Grant applications and angel allocations open.</p>
+                <h3 className="font-display font-bold text-lg text-white">Accepting Manuscripts</h3>
+                <p className="text-xs text-clarity-300">Slots open for formatting & cover packages.</p>
               </div>
               <a 
-                href="#investors" 
+                href="#publishing" 
                 className="w-12 h-12 rounded-xl bg-prosperity-500 text-white flex items-center justify-center hover:scale-105 transition-transform"
               >
                 <ArrowUpRight className="w-5 h-5" />
@@ -255,6 +256,23 @@ export default function App() {
           </div>
 
         </div>
+      </section>
+
+      {/* PUBLISHING LAUNCHPAD - PRIMARY FOCAL POINT */}
+      <section id="publishing" className="py-24 relative max-w-7xl mx-auto px-6 border-b border-clarity-50/10 scroll-mt-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+          <span className="text-xs font-bold uppercase tracking-widest text-ember-400 font-mono bg-ember-600/10 border border-ember-500/20 px-3 py-1 rounded-full">
+            Elite Book Packaging & Launch Services
+          </span>
+          <h2 className="text-4xl md:text-5xl font-display font-extrabold text-white">
+            Ember Core Publishing Launchpad
+          </h2>
+          <p className="text-clarity-300 text-sm md:text-base">
+            An elegant interactive workspace for self-publishing authors. Build your custom tech packaging suite, estimate your contract pricing, and complete your pre-publishing client intake today.
+          </p>
+        </div>
+
+        <PublishingLaunchpad />
       </section>
 
       {/* THE STORY / PROOF OF CONCEPT BLOCK */}
@@ -366,17 +384,12 @@ export default function App() {
             </div>
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              <a 
-                href="https://lovablelearner.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="px-6 py-3.5 bg-royal-600 hover:bg-royal-500 text-white font-bold rounded-xl flex items-center gap-2 transition-all"
-              >
-                Launch LovableLearner.com <ExternalLink className="w-4 h-4" />
-              </a>
+              <div className="inline-flex items-center gap-2 px-4 py-3.5 bg-clarity-50/5 text-clarity-400 font-mono text-xs rounded-xl border border-clarity-50/10">
+                <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" /> Live Site Private (Copyright Pending)
+              </div>
               <a 
                 href="#connect" 
-                className="px-6 py-3.5 bg-clarity-50/5 hover:bg-clarity-50/10 text-white border border-clarity-50/10 font-bold rounded-xl transition-all"
+                className="px-6 py-3.5 bg-gradient-to-r from-royal-600 to-ember-600 text-white font-bold rounded-xl transition-all"
               >
                 Inquire For Partnership Term
               </a>

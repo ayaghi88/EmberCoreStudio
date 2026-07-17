@@ -1,6 +1,6 @@
 {
   "name": "Ember Core Studio",
-  "description": "Premium multi-utility launcher for authors and creators featuring Shrink and Send, Text Detox Alchemy, and Authors Linguist.",
+  "description": "Ember Core Studio: Premium formatting, custom design, and technical launch services for self-publishing authors, alongside a specialized suite of creative applications.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
