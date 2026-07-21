@@ -49,6 +49,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<FilterCategory>('All');
   const [selectedApp, setSelectedApp] = useState<AppProject | null>(null);
   const [termsOpen, setTermsOpen] = useState(false);
+  const [refundsOpen, setRefundsOpen] = useState(false);
   const [supportOpen, setSupportOpen] = useState(false);
   const [supportTab, setSupportTab] = useState<'ticket' | 'faq' | 'status'>('ticket');
   
@@ -966,6 +967,15 @@ export default function App() {
                       We guarantee platform file acceptance on Amazon KDP/Lulu and perfect responsive standards on web app codes. Clients are responsible for verifying final print proofs and performing initial testing. Post-deployment support or substantive feature scope additions requested after work has commenced are governed by custom scoping addendums.
                     </p>
                   </div>
+
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-prosperity-400 mb-1">
+                      7. Refund & Client Satisfaction Guarantee Policy
+                    </h4>
+                    <p>
+                      At Ember Core Studio, we are committed to exceptional standards. If we fail to deliver code meeting your specified scope, or if any book manuscripts formatted by our team are rejected by Amazon KDP or Lulu, and we cannot resolve the formatting issue after active revisions, we offer a <strong>100% full refund of all milestone payments</strong>. Please note that the 50% commencement deposit is non-refundable once layout formatting, design drafts, or custom coding milestones have commenced.
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -979,6 +989,111 @@ export default function App() {
                     className="px-6 py-2.5 bg-gradient-to-r from-royal-600 to-ember-600 text-white font-bold rounded-xl text-xs flex items-center justify-center transition-all hover:opacity-95"
                   >
                     I Understand & Agree
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* REFUND POLICY MODAL */}
+      <AnimatePresence>
+        {refundsOpen && (
+          <div className="fixed inset-0 z-55 flex items-center justify-center p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setRefundsOpen(false)}
+              className="absolute inset-0 bg-base-950/85 backdrop-blur-md"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-2xl bg-base-900 border border-clarity-50/15 rounded-3xl overflow-hidden shadow-2xl z-10"
+            >
+              <div className="p-8 border-b border-clarity-50/10 flex justify-between items-start">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-prosperity-500/10 border border-prosperity-500/20 text-prosperity-400 text-[10px] uppercase font-mono font-bold mb-2">
+                    Client Guarantees
+                  </div>
+                  <h3 className="text-2xl font-display font-extrabold text-white">Refund & Satisfaction Policy</h3>
+                  <p className="text-xs text-clarity-400 mt-1">Ember Core Studio — Our Commitment to Professional Excellence</p>
+                </div>
+                <button 
+                  onClick={() => setRefundsOpen(false)} 
+                  className="p-2 text-clarity-400 hover:text-white hover:bg-clarity-50/5 rounded-xl transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="p-8 space-y-6 max-h-[55vh] overflow-y-auto text-xs text-clarity-300 leading-relaxed">
+                <p className="text-clarity-400">
+                  At Ember Core Studio, we strive for perfection in every app we compile and every manuscript we format. We stand fully behind our deliverables with concrete, ironclad guarantees.
+                </p>
+
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-prosperity-400 mb-1">
+                      1. 100% Satisfaction & Triage Guarantee
+                    </h4>
+                    <p>
+                      If any aspect of the completed software code, API integration, or book formatting fails to align with the agreed-upon criteria of your project scope or intake form, we will dedicate ourselves to active revisions and updates until it satisfies every standard. 
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-royal-400 mb-1">
+                      2. Platform Acceptance Guarantee (Books)
+                    </h4>
+                    <p>
+                      We guarantee platform file acceptance on Amazon KDP, Lulu, and IngramSpark. If your formatted files encounter any mechanical or structural errors during the publisher ingest process, we will repair and deliver updated files at zero cost to you. If we cannot resolve a platform file rejection, we will issue a <strong>100% full refund</strong> of the milestone fee.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-ember-400 mb-1">
+                      3. Custom Code & Feature Delivery Guarantee (Web Apps)
+                    </h4>
+                    <p>
+                      For fullstack software projects, if the compiled output fails to implement the specific interactive components, security protocols, or API integrations scoped out in the scoping workbook, and our triage team cannot satisfy those specifications during active revision cycles, you are entitled to a <strong>full refund of the development milestone fee</strong>.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-clarity-400 mb-1">
+                      4. Non-Refundable Items & Deposit Allocation
+                    </h4>
+                    <p>
+                      The initial 50% commencement deposit is strictly non-refundable once engineering sprints have begun or book styling layout prototypes have been generated. This deposit secures your dedicated slot, reserves direct development time with Amber Yaghi, and covers upfront structural preparation costs.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-royal-400 mb-1">
+                      5. Refund Process & Processing Time
+                    </h4>
+                    <p>
+                      To request a review or refund under this policy, simply submit a detailed ticket through our <strong>Customer Support Hub</strong> or email our team directly at <strong>contact@embercorestudio.org</strong>. Refund evaluations are processed within 3 business days, and approved refunds are issued immediately via Stripe back to the original method of payment.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-8 border-t border-clarity-50/10 bg-base-950 flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <span className="text-[10px] font-mono text-clarity-500 uppercase tracking-wider">
+                  Effective: July 20, 2026
+                </span>
+                <div className="flex gap-3">
+                  <button 
+                    onClick={() => setRefundsOpen(false)}
+                    className="px-6 py-2.5 bg-gradient-to-r from-prosperity-600 to-royal-600 text-white font-bold rounded-xl text-xs flex items-center justify-center transition-all hover:opacity-95 cursor-pointer"
+                  >
+                    Close Refund Policy
                   </button>
                 </div>
               </div>
@@ -1569,6 +1684,13 @@ export default function App() {
                 className="text-[11px] text-royal-400 hover:text-royal-300 underline font-mono tracking-wide transition-colors cursor-pointer"
               >
                 Terms of Service
+              </button>
+              <span className="text-clarity-600 text-[11px] font-mono">•</span>
+              <button 
+                onClick={() => setRefundsOpen(true)}
+                className="text-[11px] text-ember-400 hover:text-ember-300 underline font-mono tracking-wide transition-colors cursor-pointer"
+              >
+                Refund Policy
               </button>
               <span className="text-clarity-600 text-[11px] font-mono">•</span>
               <button 
