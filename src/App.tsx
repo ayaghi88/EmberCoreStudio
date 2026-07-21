@@ -97,7 +97,7 @@ export default function App() {
           </a>
 
           <div className="hidden lg:flex items-center gap-8">
-            <a href="#publishing" className="text-sm font-semibold text-white hover:text-ember-400 transition-colors border-b-2 border-ember-500 pb-1">Publishing Services</a>
+            <a href="#publishing" className="text-sm font-semibold text-white hover:text-ember-400 transition-colors border-b-2 border-ember-500 pb-1">Studio Launchpad</a>
             <a href="#about" className="text-sm font-medium hover:text-royal-400 transition-colors">Origin Story</a>
             <a href="#flagship" className="text-sm font-medium hover:text-prosperity-400 transition-colors">Flagship App</a>
             <a href="#creations" className="text-sm font-medium hover:text-ember-400 transition-colors">Apps Showcase</a>
@@ -140,7 +140,7 @@ export default function App() {
                   className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-clarity-50/5 text-base font-semibold text-white transition-all"
                 >
                   <BookOpen className="w-5 h-5 text-ember-500 shrink-0" />
-                  <span>Publishing Services</span>
+                  <span>Studio Launchpad (Apps & Books)</span>
                 </a>
                 <a 
                   href="#about" 
@@ -204,31 +204,31 @@ export default function App() {
           
           <div className="lg:col-span-7 space-y-8 text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-royal-500/30 bg-royal-500/10 text-royal-400 text-xs font-bold uppercase tracking-widest leading-none">
-              <Sparkles className="w-3.5 h-3.5 animate-spin-pulse" /> Premium Self-Publishing Tech & Design
+              <Sparkles className="w-3.5 h-3.5 animate-spin-pulse" /> Fullstack AI Engineering & Elite Self-Publishing
             </div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight text-white leading-tight">
-              Your Manuscript, <br />
-              <span className="text-gradient">Perfectly Published.</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-tight">
+              We Turn Ideas <br />
+              <span className="text-gradient">Into Apps & Books.</span>
             </h1>
 
-            <p className="max-w-2xl text-clarity-300 text-lg md:text-xl font-light leading-relaxed">
-              At <strong className="text-white font-medium">Ember Core Studio</strong>, we are a professional self-publishing accelerator and high-performance software laboratory. 
-              We offer bespoke book layout formatting, custom cover design, metadata keyword research, and distribution setup for Amazon KDP and Lulu. **Keep 100% of your rights and 100% of your royalties.**
+            <p className="max-w-2xl text-clarity-300 text-base md:text-lg font-light leading-relaxed">
+              At <strong className="text-white font-semibold">Ember Core Studio</strong>, we operate a premier venture incubator. 
+              We engineer custom, high-performance web applications for CEOs and founders, and craft elite self-publishing solutions for independent authors. **You retain 100% of your rights, royalties, and codebase ownership.**
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
               <a 
                 href="#publishing"
-                className="px-8 py-4 bg-gradient-to-r from-ember-500 via-royal-500 to-prosperity-600 text-white font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-0.5"
+                className="px-6 py-3.5 bg-gradient-to-r from-ember-500 via-royal-500 to-prosperity-600 text-white font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-0.5 text-sm cursor-pointer"
               >
-                Configure Publishing Services
+                Launch Studio Workspace
               </a>
               <a 
                 href="#creations"
-                className="px-8 py-4 bg-clarity-50/5 hover:bg-clarity-50/10 text-white border border-clarity-50/10 font-bold rounded-2xl transition-all"
+                className="px-6 py-3.5 bg-clarity-50/5 hover:bg-clarity-50/10 text-white border border-clarity-50/10 font-bold rounded-2xl transition-all text-sm cursor-pointer"
               >
-                Explore Engineered Apps Portfolio
+                Explore Apps Portfolio
               </a>
             </div>
 
@@ -271,8 +271,8 @@ export default function App() {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-4xl font-display font-extrabold text-white">100%</p>
-                <p className="text-xs text-clarity-400 uppercase tracking-widest font-mono mt-1">Author Royalties Kept</p>
+                <p className="text-3xl sm:text-4xl font-display font-extrabold text-white">100%</p>
+                <p className="text-[10px] text-clarity-400 uppercase tracking-widest font-mono mt-1 leading-tight">IP & Royalty Ownership Kept</p>
               </div>
             </div>
 
@@ -281,8 +281,8 @@ export default function App() {
                 <BookOpen className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-4xl font-display font-extrabold text-white">40+</p>
-                <p className="text-xs text-clarity-400 uppercase tracking-widest font-mono mt-1">SaaS & Formatting Tools</p>
+                <p className="text-3xl sm:text-4xl font-display font-extrabold text-white">40+</p>
+                <p className="text-[10px] text-clarity-400 uppercase tracking-widest font-mono mt-1 leading-tight">SaaS Apps & Book Assets</p>
               </div>
             </div>
 
@@ -291,8 +291,8 @@ export default function App() {
                 <div className="inline-flex items-center gap-1 text-[10px] text-prosperity-400 font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm bg-prosperity-500/10 border border-prosperity-500/20 mb-2">
                   Launchpad Status
                 </div>
-                <h3 className="font-display font-bold text-lg text-white">Accepting Manuscripts</h3>
-                <p className="text-xs text-clarity-300">Slots open for formatting & cover packages.</p>
+                <h3 className="font-display font-bold text-lg text-white">Accepting Projects</h3>
+                <p className="text-xs text-clarity-300">New App builds & Manuscript slots open for Q3 2026.</p>
               </div>
               <a 
                 href="#publishing" 
@@ -306,17 +306,17 @@ export default function App() {
         </div>
       </section>
 
-      {/* PUBLISHING LAUNCHPAD - PRIMARY FOCAL POINT */}
+      {/* STUDIO LAUNCHPAD - PRIMARY FOCAL POINT */}
       <section id="publishing" className="py-24 relative max-w-7xl mx-auto px-6 border-b border-clarity-50/10 scroll-mt-20">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-ember-400 font-mono bg-ember-600/10 border border-ember-500/20 px-3 py-1 rounded-full">
-            Elite Book Packaging & Launch Services
+          <span className="text-xs font-bold uppercase tracking-widest text-ember-400 font-mono bg-ember-600/10 border border-ember-500/20 px-3.5 py-1.5 rounded-full">
+            Elite Tech Scoping & Launch Workspace
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-extrabold text-white">
-            Ember Core Publishing Launchpad
+            Ember Core Studio Launchpad
           </h2>
-          <p className="text-clarity-300 text-sm md:text-base">
-            An elegant interactive workspace for self-publishing authors. Build your custom tech packaging suite, estimate your contract pricing, and complete your pre-publishing client intake today.
+          <p className="text-clarity-300 text-sm md:text-base leading-relaxed">
+            An elegant, secure interactive workspace for visionary CEOs and self-publishing authors. Configure your bespoke SaaS engineering scope or book layout package, calculate complete pricing, and submit your secure project intake today.
           </p>
         </div>
 
@@ -330,17 +330,26 @@ export default function App() {
             
             <div className="space-y-6">
               <div className="inline-flex items-center gap-1.5 text-xs text-ember-400 font-mono uppercase font-bold tracking-wider">
-                <Lightbulb className="w-4 h-4" /> The Origin Story
+                <Lightbulb className="w-4 h-4" /> About the Founder & Engineer
               </div>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
-                Built from Genuine Necessity
+                Amber Yaghi — Solo Dev & Fullstack AI Engineer
               </h2>
-              <p className="text-clarity-300 leading-relaxed">
-                Many modern application suites feel generic or overengineered because they're designed by committees. 
-                Our programs are different. They represent structural tools that <strong className="text-white">I personally wished existed</strong> while navigating demanding environments:
+              
+              <div className="p-4 bg-gradient-to-r from-ember-950/20 to-royal-950/20 border border-royal-500/20 rounded-2xl">
+                <p className="text-[9px] font-mono text-royal-400 font-bold leading-normal uppercase tracking-widest mb-1.5">
+                  LinkedIn Biography Reference:
+                </p>
+                <p className="text-xs text-white leading-relaxed italic font-medium">
+                  "Founder, Ember Core Studio | Solo dev | Fullstack AI Web App Engineer | I help CEOs turn ideas into apps | I Help Authors Launch & Keep 100% Rights & Royalties | Author of “Mind Bending: The Quantum Reality Strategist”."
+                </p>
+              </div>
+
+              <p className="text-clarity-300 leading-relaxed text-sm">
+                As a dedicated solo fullstack engineer, I design products born from practical necessity and extreme standards. Every application in our creations gallery represents tools I personally crafted and deployed to solve real-world bottlenecks:
               </p>
               
-              <ul className="space-y-4">
+              <ul className="space-y-4 text-xs">
                 <li className="flex gap-3">
                   <div className="w-6 h-6 rounded-full bg-ember-600/20 text-ember-400 shrink-0 flex items-center justify-center text-xs font-bold font-mono">1</div>
                   <div>
@@ -356,7 +365,7 @@ export default function App() {
                 <li className="flex gap-3">
                   <div className="w-6 h-6 rounded-full bg-prosperity-600/20 text-prosperity-400 shrink-0 flex items-center justify-center text-xs font-bold font-mono">3</div>
                   <div>
-                    <strong className="text-white">While Self-Publishing Books:</strong> Editing engines and design previewers serving independent creators struggling against the high price gates of legacy publishing formats.
+                    <strong className="text-white">While Self-Publishing "Mind Bending":</strong> As the author of <strong className="text-white">“Mind Bending: The Quantum Reality Strategist”</strong>, I personally engineered custom editing checkers and design previewers to bypass predatory vanity press gates—retaining 100% of my rights and royalties. We now extend this exact technical freedom to authors globally.
                   </div>
                 </li>
               </ul>
@@ -804,25 +813,25 @@ export default function App() {
 
               <div className="p-8 space-y-6 max-h-[55vh] overflow-y-auto text-xs text-clarity-300 leading-relaxed">
                 <p className="text-clarity-400">
-                  Welcome to Ember Core Studio. Please read these terms carefully. By estimating, configuring, or submitting manuscripts through our publishing accelerator, you agree to these terms of service.
+                  Welcome to Ember Core Studio. Please read these terms carefully. By estimating, configuring, or submitting specifications through our dual-scope launchpad, you agree to these terms of service.
                 </p>
 
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-ember-400 mb-1">
-                      1. 100% Royalty Ownership Guarantee
+                      1. 100% Royalty & Intellectual Property (IP) Transfer Guarantee
                     </h4>
                     <p>
-                      Ember Core Studio operates on a pure flat-fee model. We hold <strong>0% claims</strong> to your future book sales, retail royalties, or passive income streams. You retain 100% copyright, intellectual property, account credentials, and publishing distribution control.
+                      Ember Core Studio operates on flat-rate, contract-based flat-fee models. For authors, we retain <strong>0% claim</strong> on your passive book sales or retail royalty splits. For software engineering clients, <strong>100% codebase intellectual property (IP) ownership</strong> and repository control are transferred directly to you upon final milestone invoice payment. No ongoing platform or developer fees are ever charged.
                     </p>
                   </div>
 
                   <div>
                     <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-royal-400 mb-1">
-                      2. Service Scope & Custom Packaging
+                      2. Technical Service Scope & Custom Deliverables
                     </h4>
                     <p>
-                      We provide bespoke interior typesetting, layout formatting (epub & PDF), cover design packaging, and keyword metadata setup as defined in your selected contract estimator. Our flat Core Technical Package covers up to 80,000 words; larger works require custom review.
+                      For software projects, we deliver custom React frontend structures, Node/Express backend APIs, Stripe subscription billing models, and server-isolated Gemini AI pipelines as detailed in your scope estimator. For book launch agreements, we provide premium typesetting, eBook conversion, Bowker metadata layouts, and cover files.
                     </p>
                   </div>
 
@@ -831,7 +840,7 @@ export default function App() {
                       3. Flat-Fee Payments & Commencement Deposits
                     </h4>
                     <p>
-                      To allocate our design slot and technical resources, a 50% non-refundable commencement deposit is due upon contract finalization. The remaining 50% payment is due only upon final manuscript layout delivery and platform approval.
+                      To allocate technical development resources and design slots, a 50% non-refundable commencement deposit is due upon contract scoping finalization. The remaining 50% payment is due only upon final platform deployment (web apps) or print layout delivery (manuscripts).
                     </p>
                   </div>
 
@@ -846,19 +855,19 @@ export default function App() {
 
                   <div>
                     <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-ember-400 mb-1">
-                      5. Local Privacy & Zero Data Retention
+                      5. Strict Local Privacy & Zero Data Retention
                     </h4>
                     <p>
-                      Ember Core Studio respects complete client data privacy. All interactive selections, manuscript word count inputs, and form details are processed 100% locally inside your web browser. No drafts, manuscripts, or contact details are saved to secondary backend databases or cloud environments. Data is only transmitted directly to <strong>contact@embercorestudio.org</strong> when you voluntarily choose to copy or email your completed summaries.
+                      Ember Core Studio respects complete client data and concept privacy. All interactive selections, app idea specifications, manuscript parameters, and form inputs are processed 100% locally inside your browser. No drafts, proprietary source codes, or contact details are saved to secondary backend databases. Data is only transmitted directly to <strong>contact@embercorestudio.org</strong> when you voluntarily choose to copy or email your completed summaries.
                     </p>
                   </div>
 
                   <div>
                     <h4 className="font-bold text-white uppercase text-[10px] tracking-widest font-mono text-royal-400 mb-1">
-                      6. Formatting Approvals & Revisions
+                      6. Testing, Deployment & Revisions
                     </h4>
                     <p>
-                      We guarantee platform file acceptance on Amazon KDP and Lulu. The Author is responsible for verifying spelling, punctuation, and final print proofing. Substantive manuscript text changes requested after formatting work has commenced may incur additional formatting adjustment fees.
+                      We guarantee platform file acceptance on Amazon KDP/Lulu and perfect responsive standards on web app codes. Clients are responsible for verifying final print proofs and performing initial testing. Post-deployment support or substantive feature scope additions requested after work has commenced are governed by custom scoping addendums.
                     </p>
                   </div>
                 </div>

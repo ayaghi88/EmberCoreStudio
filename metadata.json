@@ -1,6 +1,6 @@
 {
   "name": "Ember Core Studio",
-  "description": "Ember Core Studio: Premium formatting, custom design, and technical launch services for self-publishing authors, alongside a specialized suite of creative applications.",
+  "description": "Ember Core Studio: Custom fullstack web app development for CEOs alongside premium self-publishing packages for independent authors. Launch ideas with 100% rights, royalties, and ownership retention.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
