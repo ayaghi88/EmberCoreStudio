@@ -346,7 +346,7 @@ export default function App() {
               </div>
 
               <p className="text-clarity-300 leading-relaxed text-sm">
-                As a dedicated solo fullstack engineer, I design products born from practical necessity and extreme standards. Every application in our creations gallery represents tools I personally crafted and deployed to solve real-world bottlenecks:
+                As a dedicated solo fullstack engineer, I design products born from practical necessity and extreme standards. Every application in our creations gallery represents tools I personally crafted and deployed to solve real-world challenges:
               </p>
               
               <ul className="space-y-4 text-xs">
