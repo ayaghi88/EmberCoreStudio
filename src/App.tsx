@@ -30,7 +30,12 @@ import {
   Lightbulb,
   Compass,
   Copy,
-  Check
+  Check,
+  LifeBuoy,
+  MessageSquare,
+  Clock,
+  HelpCircle,
+  Send
 } from 'lucide-react';
 import { APPS_DATA, AppProject } from './data';
 import PublishingLaunchpad from './components/PublishingLaunchpad';
@@ -44,6 +49,84 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<FilterCategory>('All');
   const [selectedApp, setSelectedApp] = useState<AppProject | null>(null);
   const [termsOpen, setTermsOpen] = useState(false);
+  const [supportOpen, setSupportOpen] = useState(false);
+  const [supportTab, setSupportTab] = useState<'ticket' | 'faq' | 'status'>('ticket');
+  
+  // Support state fields
+  const [ticketCategory, setTicketCategory] = useState('Software Engineering Scope');
+  const [ticketEmail, setTicketEmail] = useState('');
+  const [ticketSubject, setTicketSubject] = useState('');
+  const [ticketMessage, setTicketMessage] = useState('');
+  const [ticketIdInput, setTicketIdInput] = useState('');
+  const [lastSubmittedId, setLastSubmittedId] = useState<string | null>(null);
+  const [activeSearchedTicket, setActiveSearchedTicket] = useState<any | null>(null);
+  const [ticketSearchError, setTicketSearchError] = useState('');
+  
+  const [submittedTickets, setSubmittedTickets] = useState<Array<{
+    id: string;
+    subject: string;
+    category: string;
+    message: string;
+    email: string;
+    status: string;
+    date: string;
+  }>>([
+    {
+      id: "ECS-7391",
+      subject: "Stripe Subscription Callbacks",
+      category: "Software Engineering Scope",
+      message: "Need to verify that direct metadata mapping handles customer email mismatches.",
+      email: "ceo.founder@ventures.com",
+      status: "In Progress by Amber Yaghi",
+      date: "2026-07-19"
+    },
+    {
+      id: "ECS-9021",
+      subject: "Bowker Registration Assistance",
+      category: "Elite Self-Publishing Package",
+      message: "Need help registering my single ISBN under my custom imprint.",
+      email: "author.test@gmail.com",
+      status: "Resolved",
+      date: "2026-07-18"
+    }
+  ]);
+  
+  const handleSupportSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!ticketEmail.trim() || !ticketSubject.trim() || !ticketMessage.trim()) return;
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    const newId = `ECS-${randomNum}`;
+    const newTicket = {
+      id: newId,
+      subject: ticketSubject,
+      category: ticketCategory,
+      message: ticketMessage,
+      email: ticketEmail,
+      status: 'In Progress by Amber Yaghi',
+      date: new Date().toISOString().split('T')[0]
+    };
+    setSubmittedTickets([newTicket, ...submittedTickets]);
+    setLastSubmittedId(newId);
+    setTicketSubject('');
+    setTicketMessage('');
+    setSupportTab('status');
+    setTicketIdInput(newId);
+    setActiveSearchedTicket(newTicket);
+    setTicketSearchError('');
+  };
+
+  const handleSearchTicket = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cleanId = ticketIdInput.trim().toUpperCase();
+    const found = submittedTickets.find(t => t.id === cleanId);
+    if (found) {
+      setActiveSearchedTicket(found);
+      setTicketSearchError('');
+    } else {
+      setActiveSearchedTicket(null);
+      setTicketSearchError('Ticket ID not found. Verify the ID is in format ECS-XXXX');
+    }
+  };
   
   // Email-to-clipboard copy feature
   const [copied, setCopied] = useState(false);
@@ -102,6 +185,12 @@ export default function App() {
             <a href="#flagship" className="text-sm font-medium hover:text-prosperity-400 transition-colors">Flagship App</a>
             <a href="#creations" className="text-sm font-medium hover:text-ember-400 transition-colors">Apps Showcase</a>
             <a href="#investors" className="text-sm font-medium hover:text-royal-400 transition-colors">SBA Prospectus</a>
+            <button 
+              onClick={() => { setSupportOpen(true); setSupportTab('ticket'); }}
+              className="text-xs font-bold uppercase tracking-wider text-prosperity-400 hover:text-prosperity-300 transition-all bg-prosperity-500/10 border border-prosperity-500/20 px-3 py-1.5 rounded-xl cursor-pointer hover:scale-105 active:scale-95"
+            >
+              Support Desk
+            </button>
             <a href="#connect" className="text-sm font-medium hover:text-prosperity-400 transition-colors">Get in Touch</a>
           </div>
 
@@ -182,6 +271,13 @@ export default function App() {
                   <Mail className="w-5 h-5 text-prosperity-500 shrink-0" />
                   <span>Get in Touch</span>
                 </a>
+                <button 
+                  onClick={() => { setSupportOpen(true); setSupportTab('ticket'); setMobileMenuOpen(false); }}
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-clarity-50/5 text-base font-semibold text-prosperity-400 hover:text-white transition-all w-full text-left"
+                >
+                  <LifeBuoy className="w-5 h-5 text-prosperity-400 shrink-0" />
+                  <span>Customer Support Hub</span>
+                </button>
               </div>
               <div className="pt-2 border-t border-clarity-50/5">
                 <a 
@@ -891,6 +987,307 @@ export default function App() {
         )}
       </AnimatePresence>
 
+      {/* CUSTOMER SUPPORT HUB MODAL */}
+      <AnimatePresence>
+        {supportOpen && (
+          <div className="fixed inset-0 z-55 flex items-center justify-center p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSupportOpen(false)}
+              className="absolute inset-0 bg-base-950/85 backdrop-blur-md"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-2xl bg-base-900 border border-clarity-50/15 rounded-3xl overflow-hidden shadow-2xl z-10"
+            >
+              <div className="p-6 sm:p-8 border-b border-clarity-50/10 flex justify-between items-start bg-base-950/40">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-ember-500/10 border border-ember-500/20 text-ember-400 text-[10px] uppercase font-mono font-bold mb-2">
+                    <LifeBuoy className="w-3 h-3 text-ember-400" /> Client Care Center
+                  </div>
+                  <h3 className="text-2xl font-display font-extrabold text-white">Customer Support Hub</h3>
+                  <p className="text-xs text-clarity-400 mt-1">Ember Core Studio Support Desk & Ticket Resolution System</p>
+                </div>
+                <button 
+                  onClick={() => setSupportOpen(false)} 
+                  className="p-2 text-clarity-400 hover:text-white hover:bg-clarity-50/5 rounded-xl transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Navigation Tabs */}
+              <div className="flex border-b border-clarity-50/10 bg-base-950/20 px-4 sm:px-6">
+                <button
+                  onClick={() => setSupportTab('ticket')}
+                  className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all ${
+                    supportTab === 'ticket' 
+                      ? 'border-ember-500 text-white' 
+                      : 'border-transparent text-clarity-400 hover:text-white'
+                  }`}
+                >
+                  <MessageSquare className="w-3.5 h-3.5" /> Submit Ticket
+                </button>
+                <button
+                  onClick={() => setSupportTab('status')}
+                  className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all ${
+                    supportTab === 'status' 
+                      ? 'border-royal-500 text-white' 
+                      : 'border-transparent text-clarity-400 hover:text-white'
+                  }`}
+                >
+                  <Clock className="w-3.5 h-3.5" /> Check Status
+                </button>
+                <button
+                  onClick={() => setSupportTab('faq')}
+                  className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all ${
+                    supportTab === 'faq' 
+                      ? 'border-prosperity-500 text-white' 
+                      : 'border-transparent text-clarity-400 hover:text-white'
+                  }`}
+                >
+                  <HelpCircle className="w-3.5 h-3.5" /> Support FAQ
+                </button>
+              </div>
+
+              <div className="p-6 sm:p-8 space-y-6 max-h-[50vh] overflow-y-auto">
+                {supportTab === 'ticket' && (
+                  <form onSubmit={handleSupportSubmit} className="space-y-4">
+                    <p className="text-xs text-clarity-300 leading-relaxed">
+                      Need custom support or code adjustments? Submit a priority ticket directly to our system. All tickets are automatically routed to Amber Yaghi with an under 24-hour response SLA guarantee.
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-[10px] uppercase font-mono tracking-widest text-clarity-400 mb-1.5">
+                          Support Category
+                        </label>
+                        <select
+                          value={ticketCategory}
+                          onChange={(e) => setTicketCategory(e.target.value)}
+                          className="w-full px-4 py-2.5 bg-base-950 border border-clarity-50/10 rounded-xl text-xs text-white focus:outline-none focus:border-ember-500 transition-colors"
+                        >
+                          <option value="Software Engineering Scope">Software Engineering Scope</option>
+                          <option value="Elite Self-Publishing Package">Elite Self-Publishing Package</option>
+                          <option value="SBA Funding & Investment">SBA Funding & Investment</option>
+                          <option value="Education Partnerships">Education Partnerships</option>
+                          <option value="Intellectual Property (IP)">Intellectual Property (IP)</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-[10px] uppercase font-mono tracking-widest text-clarity-400 mb-1.5">
+                          Your Email Address
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          placeholder="client@yourcompany.com"
+                          value={ticketEmail}
+                          onChange={(e) => setTicketEmail(e.target.value)}
+                          className="w-full px-4 py-2.5 bg-base-950 border border-clarity-50/10 rounded-xl text-xs text-white placeholder-clarity-600 focus:outline-none focus:border-ember-500 transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] uppercase font-mono tracking-widest text-clarity-400 mb-1.5">
+                        Subject / Focus Area
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Critical API integration update or formatting revision"
+                        value={ticketSubject}
+                        onChange={(e) => setTicketSubject(e.target.value)}
+                        className="w-full px-4 py-2.5 bg-base-950 border border-clarity-50/10 rounded-xl text-xs text-white placeholder-clarity-600 focus:outline-none focus:border-ember-500 transition-colors"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] uppercase font-mono tracking-widest text-clarity-400 mb-1.5">
+                        Detailed Support Requirement
+                      </label>
+                      <textarea
+                        required
+                        rows={4}
+                        placeholder="Please specify exactly what needs adjustment or assistance, including relevant repository paths or book chapter files if applicable."
+                        value={ticketMessage}
+                        onChange={(e) => setTicketMessage(e.target.value)}
+                        className="w-full px-4 py-2.5 bg-base-950 border border-clarity-50/10 rounded-xl text-xs text-white placeholder-clarity-600 focus:outline-none focus:border-ember-500 transition-colors resize-none"
+                      />
+                    </div>
+
+                    <div className="flex justify-end pt-2">
+                      <button
+                        type="submit"
+                        className="px-6 py-3 bg-gradient-to-r from-ember-500 to-royal-600 text-white font-bold rounded-xl text-xs flex items-center gap-2 hover:opacity-90 transition-all cursor-pointer"
+                      >
+                        <Send className="w-3.5 h-3.5" /> Submit Intake Ticket
+                      </button>
+                    </div>
+                  </form>
+                )}
+
+                {supportTab === 'status' && (
+                  <div className="space-y-6">
+                    <form onSubmit={handleSearchTicket} className="space-y-3">
+                      <label className="block text-[10px] uppercase font-mono tracking-widest text-clarity-400">
+                        Check Real-time Ticket Status
+                      </label>
+                      <p className="text-xs text-clarity-400 leading-normal">
+                        Input your ECS support reference code (e.g., <strong className="text-white">ECS-9021</strong> or <strong className="text-white">ECS-7391</strong>) below to check triage updates.
+                      </p>
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          placeholder="ECS-XXXX"
+                          value={ticketIdInput}
+                          onChange={(e) => setTicketIdInput(e.target.value)}
+                          className="flex-1 px-4 py-2.5 bg-base-950 border border-clarity-50/10 rounded-xl text-xs text-white placeholder-clarity-600 focus:outline-none focus:border-royal-500 transition-colors uppercase"
+                        />
+                        <button
+                          type="submit"
+                          className="px-5 py-2.5 bg-royal-600 hover:bg-royal-500 text-white font-bold rounded-xl text-xs transition-all cursor-pointer"
+                        >
+                          Verify Status
+                        </button>
+                      </div>
+                      {ticketSearchError && (
+                        <p className="text-xs text-ember-400 font-mono mt-1">{ticketSearchError}</p>
+                      )}
+                    </form>
+
+                    {activeSearchedTicket ? (
+                      <div className="p-5 rounded-2xl bg-base-950 border border-clarity-50/10 space-y-4">
+                        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-clarity-50/10 pb-3">
+                          <div>
+                            <span className="text-[10px] font-mono text-royal-400 font-bold bg-royal-500/10 border border-royal-500/20 px-2 py-0.5 rounded mr-2">
+                              {activeSearchedTicket.id}
+                            </span>
+                            <span className="text-xs font-semibold text-white">{activeSearchedTicket.subject}</span>
+                          </div>
+                          <span className={`text-[10px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
+                            activeSearchedTicket.status.includes('Resolved')
+                              ? 'bg-prosperity-500/10 border-prosperity-500/20 text-prosperity-400'
+                              : 'bg-ember-500/10 border-ember-500/20 text-ember-400 animate-pulse'
+                          }`}>
+                            {activeSearchedTicket.status}
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4 text-[11px] text-clarity-400">
+                          <div>
+                            <span className="block text-[8px] uppercase tracking-widest text-clarity-500 font-mono mb-0.5">Assigned Group</span>
+                            <span className="text-white font-medium">Amber Yaghi (Lead Dev)</span>
+                          </div>
+                          <div>
+                            <span className="block text-[8px] uppercase tracking-widest text-clarity-500 font-mono mb-0.5">Category Class</span>
+                            <span className="text-white font-medium">{activeSearchedTicket.category}</span>
+                          </div>
+                          <div>
+                            <span className="block text-[8px] uppercase tracking-widest text-clarity-500 font-mono mb-0.5">Date Submitted</span>
+                            <span className="font-mono">{activeSearchedTicket.date}</span>
+                          </div>
+                          <div>
+                            <span className="block text-[8px] uppercase tracking-widest text-clarity-500 font-mono mb-0.5">Client ID Verification</span>
+                            <span className="font-mono text-clarity-300">{activeSearchedTicket.email}</span>
+                          </div>
+                        </div>
+
+                        <div className="bg-base-900 p-3.5 rounded-xl border border-clarity-50/5 text-xs text-clarity-300">
+                          <span className="block text-[8px] uppercase tracking-widest text-clarity-500 font-mono mb-1">Issue Description</span>
+                          {activeSearchedTicket.message}
+                        </div>
+
+                        {activeSearchedTicket.status.includes('Resolved') ? (
+                          <div className="text-xs text-prosperity-400 bg-prosperity-500/5 border border-prosperity-500/20 p-3 rounded-xl flex items-start gap-2">
+                            <Check className="w-4 h-4 shrink-0 mt-0.5" />
+                            <div>
+                              <strong className="block text-white">Status: Issue Resolved</strong>
+                              Amber has successfully finalized this requirement. Deployment is active and assets are transferred.
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="text-xs text-royal-400 bg-royal-500/5 border border-royal-500/20 p-3 rounded-xl flex items-start gap-2">
+                            <Clock className="w-4 h-4 shrink-0 mt-0.5 animate-spin-pulse" />
+                            <div>
+                              <strong className="block text-white">Status: Triaged & Processing</strong>
+                              Amber Yaghi has scheduled this adjustment. We will coordinate directly via {activeSearchedTicket.email}.
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="p-8 border border-dashed border-clarity-50/10 rounded-2xl text-center text-clarity-500 text-xs">
+                        No ticket selected. Input a valid Ticket ID above to load details.
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {supportTab === 'faq' && (
+                  <div className="space-y-4">
+                    <p className="text-xs text-clarity-300">
+                      Explore detailed operational guarantees and SLA procedures directly designed to keep your venture running flawlessly.
+                    </p>
+
+                    <div className="space-y-3">
+                      <div className="p-4 bg-base-950 border border-clarity-50/5 rounded-xl space-y-1">
+                        <h4 className="text-xs font-semibold text-white">How fast is the support response time?</h4>
+                        <p className="text-xs text-clarity-400 leading-relaxed">
+                          Founder & Engineer Amber Yaghi personally triages and completes all tickets. Active contracts and deployed applications receive priority response SLAs of <strong className="text-white">under 24 hours</strong>, Monday through Friday.
+                        </p>
+                      </div>
+
+                      <div className="p-4 bg-base-950 border border-clarity-50/5 rounded-xl space-y-1">
+                        <h4 className="text-xs font-semibold text-white">What if a software bug occurs after my app is deployed?</h4>
+                        <p className="text-xs text-clarity-400 leading-relaxed">
+                          All software engineering milestone deliveries include a <strong className="text-white">90-day post-launch critical bug guarantee</strong>. If any code features, Stripe subscriptions, or server APIs malfunction, we patch it immediately at no additional cost.
+                        </p>
+                      </div>
+
+                      <div className="p-4 bg-base-950 border border-clarity-50/5 rounded-xl space-y-1">
+                        <h4 className="text-xs font-semibold text-white">Who owns the code and final book formatted assets?</h4>
+                        <p className="text-xs text-clarity-400 leading-relaxed">
+                          You do! We transfer 100% intellectual property (IP) and repository ownership directly upon milestone completion. No ongoing developer or platform fee divides are ever retained.
+                        </p>
+                      </div>
+
+                      <div className="p-4 bg-base-950 border border-clarity-50/5 rounded-xl space-y-1">
+                        <h4 className="text-xs font-semibold text-white">How do I submit an urgent manuscript revision?</h4>
+                        <p className="text-xs text-clarity-400 leading-relaxed">
+                          Simply use the "Submit Ticket" tab here and select the "Elite Self-Publishing Package" category. You can also write directly to <strong className="text-white">contact@embercorestudio.org</strong> for real-time file updates.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="p-6 sm:p-8 border-t border-clarity-50/10 bg-base-950 flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <span className="text-[10px] font-mono text-clarity-500 uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-prosperity-500 animate-pulse" /> Support SLA Active (24 Hr response)
+                </span>
+                <div className="flex gap-3">
+                  <button 
+                    onClick={() => setSupportOpen(false)}
+                    className="px-6 py-2.5 bg-clarity-50/5 text-clarity-300 hover:text-white rounded-xl text-xs font-bold transition-all border border-clarity-50/10"
+                  >
+                    Close Hub
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* SECTION: EDUCATIONAL TRAINING FOR STUDENTS & TEAMS */}
       <section id="education" className="py-24 border-t border-clarity-50/10 bg-base-900/10 relative">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -1162,16 +1559,25 @@ export default function App() {
             </span>
           </div>
           
-          <div className="flex flex-col items-center md:items-start gap-1">
+          <div className="flex flex-col items-center md:items-start gap-1.5">
             <p className="text-xs uppercase tracking-widest text-clarity-300">
               © 2025 Ember Core Studio. Built as proof of concept.
             </p>
-            <button 
-              onClick={() => setTermsOpen(true)}
-              className="text-[11px] text-royal-400 hover:text-royal-300 underline font-mono tracking-wide transition-colors cursor-pointer self-center md:self-start"
-            >
-              Terms of Service
-            </button>
+            <div className="flex gap-4 self-center md:self-start">
+              <button 
+                onClick={() => setTermsOpen(true)}
+                className="text-[11px] text-royal-400 hover:text-royal-300 underline font-mono tracking-wide transition-colors cursor-pointer"
+              >
+                Terms of Service
+              </button>
+              <span className="text-clarity-600 text-[11px] font-mono">•</span>
+              <button 
+                onClick={() => { setSupportOpen(true); setSupportTab('ticket'); }}
+                className="text-[11px] text-prosperity-400 hover:text-prosperity-300 underline font-mono tracking-wide transition-colors cursor-pointer"
+              >
+                Customer Support Hub
+              </button>
+            </div>
           </div>
 
           <div className="flex gap-6">
