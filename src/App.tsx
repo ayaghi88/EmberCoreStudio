@@ -1611,6 +1611,24 @@ export default function App() {
                     </a>
                   </div>
                 </div>
+
+                <div className="p-4 rounded-xl bg-gradient-to-r from-ember-500/5 to-prosperity-500/5 border border-ember-500/15 flex items-center gap-3 hover:border-ember-500/40 transition-all group">
+                  <div className="w-10 h-10 rounded-full bg-ember-500/10 flex items-center justify-center shrink-0">
+                    <HeartHandshake className="w-5 h-5 text-ember-400 animate-pulse" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-ember-400 font-mono">Sponsor & Support</p>
+                    <a 
+                      href="https://github.com/sponsors/ayaghi88" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="text-sm font-semibold text-white hover:text-ember-400 transition-colors flex items-center gap-1"
+                    >
+                      <span>github.com/sponsors/ayaghi88</span>
+                      <ArrowUpRight className="w-3 h-3 text-clarity-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1702,11 +1720,21 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex gap-6">
-            <a href="https://github.com/ayaghi88" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+          <div className="flex items-center gap-6">
+            <a 
+              href="https://github.com/sponsors/ayaghi88" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="text-ember-500 hover:text-ember-400 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider font-mono bg-ember-500/10 border border-ember-500/20 px-2.5 py-1 rounded-lg hover:scale-105 active:scale-95 transition-all"
+              title="Sponsor on GitHub"
+            >
+              <HeartHandshake className="w-3.5 h-3.5" />
+              <span>Sponsor</span>
+            </a>
+            <a href="https://github.com/ayaghi88" target="_blank" rel="noreferrer" className="hover:text-white transition-colors" title="GitHub Profile">
               <Github className="w-4 h-4" />
             </a>
-            <a href="https://linkedin.com/in/amberyaghi" target="_blank" rel="noreferrer" className="hover:text-royal-400 transition-colors">
+            <a href="https://linkedin.com/in/amberyaghi" target="_blank" rel="noreferrer" className="hover:text-royal-400 transition-colors" title="LinkedIn Profile">
               <Linkedin className="w-4 h-4" />
             </a>
           </div>
