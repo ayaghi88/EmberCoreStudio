@@ -499,7 +499,7 @@ Total Scope Estimate: $${totalContractValue.toLocaleString()}
                     </div>
                     <h4 className="text-xl font-display font-bold text-white">How We Build: Extreme Agility</h4>
                     <p className="text-clarity-300 leading-relaxed text-xs">
-                      As a specialized Fullstack AI Web App Engineer, I leverage state-of-the-art developer systems to achieve 10x output speed.
+                      As a specialized Fullstack AI Web App Developer, I leverage state-of-the-art developer systems to achieve 10x output speed.
                     </p>
                     <p className="text-clarity-300 leading-relaxed text-xs">
                       We compile robust, type-safe architectures using **React 18+ (Vite) on the frontend** paired with **Express Node.js on the backend**. We use official `@google/genai` libraries to wire Gemini context-awareness directly into server routes, shielding your API secrets perfectly from the client.

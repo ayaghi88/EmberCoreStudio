@@ -427,10 +427,10 @@ export default function App() {
             
             <div className="space-y-6">
               <div className="inline-flex items-center gap-1.5 text-xs text-ember-400 font-mono uppercase font-bold tracking-wider">
-                <Lightbulb className="w-4 h-4" /> About the Founder & Engineer
+                <Lightbulb className="w-4 h-4" /> About the Founder & Developer
               </div>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
-                Amber Yaghi — Solo Dev & Fullstack AI Engineer
+                Amber Yaghi — Solo Fullstack AI Dev
               </h2>
               
               <div className="p-4 bg-gradient-to-r from-ember-950/20 to-royal-950/20 border border-royal-500/20 rounded-2xl">
@@ -438,7 +438,7 @@ export default function App() {
                   LinkedIn Biography Reference:
                 </p>
                 <p className="text-xs text-white leading-relaxed italic font-medium">
-                  "Founder, Ember Core Studio | Solo dev | Fullstack AI Web App Engineer | I help CEOs turn ideas into apps | I Help Authors Launch & Keep 100% Rights & Royalties | Author of “Mind Bending: The Quantum Reality Strategist”."
+                  "Founder, Ember Core Studio | Solo Fullstack AI Dev | Fullstack AI Web App Developer | I help CEOs turn ideas into apps | I Help Authors Launch & Keep 100% Rights & Royalties | Author of “Mind Bending: The Quantum Reality Strategist”."
                 </p>
               </div>
 
