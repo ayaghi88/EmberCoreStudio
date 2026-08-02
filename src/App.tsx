@@ -538,14 +538,13 @@ export default function App() {
             </div>
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              <div className="inline-flex items-center gap-2 px-4 py-3.5 bg-clarity-50/5 text-clarity-400 font-mono text-xs rounded-xl border border-clarity-50/10">
-                <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" /> Live Site Private (Copyright Pending)
-              </div>
               <a 
-                href="#connect" 
-                className="px-6 py-3.5 bg-gradient-to-r from-royal-600 to-ember-600 text-white font-bold rounded-xl transition-all"
+                href="https://lovablelearner.com" 
+                target="_blank" 
+                rel="noreferrer"
+                className="px-6 py-3.5 bg-gradient-to-r from-royal-600 to-ember-600 text-white font-bold rounded-xl transition-all hover:scale-105 active:scale-95"
               >
-                Inquire For Partnership Term
+                Visit LovableLearner.com
               </a>
             </div>
           </div>
