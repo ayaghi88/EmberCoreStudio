@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="emberLogoTitle">
+  <title id="emberLogoTitle">Ember Core Studio Colophon</title>
+  <defs>
+    <linearGradient id="emberFlameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stopColor="#7C2D12" />
+      <stop offset="55%" stopColor="#9A3412" />
+      <stop offset="100%" stopColor="#C69249" />
+    </linearGradient>
+  </defs>
+  <!-- Archival Alabaster Seal Background -->
+  <rect width="256" height="256" rx="44" fill="#FAF7F2" />
+  <!-- Outer & Inner Hairline Engraving Frame -->
+  <rect x="14" y="14" width="228" height="228" rx="34" fill="none" stroke="#181512" strokeWidth="2" strokeOpacity="0.88" />
+  <rect x="21" y="21" width="214" height="214" rx="29" fill="none" stroke="#9A3412" strokeWidth="1" strokeOpacity="0.45" />
+
+  <!-- Sculpted Botanical Ember Flame Rising from Spine -->
+  <path
+    d="M128 44 C138 68, 160 84, 156 114 C153 134, 138 148, 128 158 C118 148, 103 134, 100 114 C96 84, 118 68, 128 44 Z"
+    fill="url(#emberFlameGrad)"
+  />
+  <!-- Inner Negative-Space Folio Vein inside Flame -->
+  <path
+    d="M128 74 C133 90, 141 102, 138 119 C136 131, 131 140, 128 146 C125 140, 120 131, 118 119 C115 102, 123 90, 128 74 Z"
+    fill="#FAF7F2"
+  />
+  <path
+    d="M128 96 C130 107, 132 116, 128 134 C124 116, 126 107, 128 96 Z"
+    fill="#9A3412"
+  />
+
+  <!-- Open Literary Tome / Folio Pages -->
+  <!-- Left Outer Board & Folio -->
+  <path
+    d="M54 148 C78 142, 108 148, 128 164 C148 148, 178 142, 202 148 L208 184 C180 177, 150 182, 128 198 C106 182, 76 177, 48 184 Z"
+    fill="none"
+    stroke="#181512"
+    strokeWidth="4.5"
+    strokeLinejoin="round"
+  />
+  <!-- Upper Page Arcs -->
+  <path
+    d="M62 136 C84 131, 110 137, 128 152 C146 137, 172 131, 194 136"
+    fill="none"
+    stroke="#181512"
+    strokeWidth="3"
+    strokeLinecap="round"
+  />
+  <path
+    d="M58 164 C82 158, 108 164, 128 180 C148 164, 174 158, 198 164"
+    fill="none"
+    stroke="#9A3412"
+    strokeWidth="2.2"
+    strokeLinecap="round"
+  />
+  <!-- Central Binding Spine & Base Cradle -->
+  <line x1="128" y1="152" x2="128" y2="202" stroke="#181512" strokeWidth="4" strokeLinecap="round" />
+  <path
+    d="M114 202 Q128 212 142 202"
+    fill="none"
+    stroke="#181512"
+    strokeWidth="3.5"
+    strokeLinecap="round"
+  />
+</svg>
